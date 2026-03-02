@@ -1,321 +1,487 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ATL – EB1/JI nº1 do Pragal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/styles.css"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 </head>
+
 <body>
 
-<!-- ── NAVBAR ── -->
-<nav>
-  <div class="nav-logo" id="navLogoBtn">
-    <img src="img\logo2.png" alt="Logo ATL" onerror="this.style.display='none'"/>
-    <div>
-      <strong>ATL Pragal</strong>
-      <span>EB1/JI nº1 do Pragal</span>
-    </div>
-  </div>
-  <div class="nav-links" id="navLinks">
-    <a class="active" data-page="home">Início</a>
-    <a data-page="about">Sobre Nós</a>
-    <a data-page="activities">Atividades</a>
-    <a data-page="contact">Contactos</a>
-  </div>
-  <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<!-- ══════════════ HOME ══════════════ -->
-<div class="page active" id="page-home">
-
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <span class="pill">🦒 Bem-vindos à ATL</span>
-        <h1>Um lugar onde as crianças <span>crescem, brincam e aprendem</span></h1>
-        <p>A Associação de Pais e Encarregados de Educação da EB1/JI nº1 do Pragal cuida dos seus filhos com carinho, criatividade e dedicação nos tempos livres.</p>
-        <div class="hero-btns">
-          <button class="btn btn-primary" data-goto="activities">Ver Atividades 🎨</button>
-          <button class="btn btn-secondary" data-goto="contact">Fale Connosco</button>
-        </div>
-        <div class="hero-stats">
-          <div class="stat"><strong>+120</strong><span>Crianças</span></div>
-          <div class="stat"><strong>+15</strong><span>Atividades</span></div>
-          <div class="stat"><strong>10+</strong><span>Anos</span></div>
-        </div>
-      </div>
-      <div class="hero-image">
-        <img src="img\logo2.png" alt="Mascote ATL – Girafa"/>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="section-header">
-      <span class="pill">O que fazemos</span>
-      <h2>Porquê escolher a ATL Pragal?</h2>
-      <p>Proporcionamos um ambiente seguro, alegre e estimulante para cada criança.</p>
-    </div>
-    <div class="features-grid">
-      <div class="feature-card"><div class="feature-icon">🏡</div><h3>Ambiente Seguro</h3><p>Espaços supervisionados por educadores qualificados, pensados para o bem-estar e segurança de cada criança.</p></div>
-      <div class="feature-card"><div class="feature-icon">🎭</div><h3>Atividades Diversificadas</h3><p>Do desporto às artes, da música à leitura — temos algo para cada personalidade e interesse.</p></div>
-      <div class="feature-card"><div class="feature-icon">🤝</div><h3>Parceria com as Famílias</h3><p>Mantemos os pais sempre informados e envolvidos no crescimento dos seus filhos.</p></div>
-    </div>
-  </section>
-
-  <section class="bg-gray">
-    <div class="section-header">
-      <span class="pill">Programas</span>
-      <h2>Atividades para todos os gostos</h2>
-      <p>Cada dia é uma nova aventura na ATL Pragal!</p>
-    </div>
-    <div class="act-grid">
-      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#e8f4fd,#c8e6fa)">⚽</div><div class="act-body"><h3>Desporto & Movimento</h3><p>Futebol, jogos tradicionais e atividade física para um desenvolvimento saudável.</p><span class="act-tag">Diário</span></div></div>
-      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#fff8e8,#ffeab0)">🎨</div><div class="act-body"><h3>Artes & Criatividade</h3><p>Pintura, desenho, colagens e projetos artísticos que estimulam a imaginação.</p><span class="act-tag" style="background:var(--orange)">Semanal</span></div></div>
-      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#ffeef0,#ffd0d4)">📚</div><div class="act-body"><h3>Apoio ao Estudo</h3><p>Acompanhamento nos trabalhos de casa num ambiente tranquilo e organizado.</p><span class="act-tag" style="background:var(--red)">Diário</span></div></div>
-      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#efffee,#c8f5c8)">🎵</div><div class="act-body"><h3>Música & Teatro</h3><p>Expressão dramática e musical para desenvolver criatividade e confiança.</p><span class="act-tag" style="background:#2ecc71">Semanal</span></div></div>
-    </div>
-    <div style="text-align:center;margin-top:2.5rem">
-      <button class="btn btn-primary" data-goto="activities">Ver todas as atividades →</button>
-    </div>
-  </section>
-
-  <div class="cta">
-    <h2>A sua família faz parte da nossa família 🦒</h2>
-    <p>Junte-se à comunidade ATL Pragal e dê às crianças os melhores tempos livres.</p>
-    <button class="btn btn-primary" data-goto="contact">Entrar em Contacto</button>
-  </div>
-
-</div>
-
-<!-- ══════════════ SOBRE NÓS ══════════════ -->
-<div class="page" id="page-about">
-
-  <div class="page-hero">
-    <span class="pill">A Nossa História</span>
-    <h1>Sobre a ATL Pragal</h1>
-    <p>Uma associação criada por pais, para pais — com o único objetivo de cuidar e inspirar as crianças da nossa comunidade.</p>
-  </div>
-
-  <div class="about-content">
-    <div class="about-block">
-      <div class="about-text">
-        <h2>Quem Somos</h2>
-        <p>A Associação de Pais e Encarregados de Educação da EB1/JI nº1 do Pragal é uma organização sem fins lucrativos fundada com o objetivo de apoiar e enriquecer os tempos livres das crianças da escola.</p>
-        <p>Trabalhamos em conjunto com a escola e com as famílias para criar um ambiente acolhedor, estimulante e seguro onde cada criança pode desenvolver as suas capacidades ao máximo.</p>
-      </div>
-      <div class="about-visual av-blue">🦒</div>
-    </div>
-    <div class="about-block rev">
-      <div class="about-text">
-        <h2>A Nossa Missão</h2>
-        <p>Promover o desenvolvimento integral das crianças através de atividades lúdicas, educativas e desportivas de qualidade nos seus tempos livres.</p>
-        <p>Acreditamos que cada momento fora da sala de aula é uma oportunidade de aprender, crescer e criar memórias felizes.</p>
-      </div>
-      <div class="about-visual av-orange">🌟</div>
-    </div>
-  </div>
-
-  <section class="bg-gray">
-    <div class="section-header">
-      <span class="pill">Os Nossos Valores</span>
-      <h2>O que nos guia</h2>
-    </div>
-    <div class="values-grid">
-      <div class="val-card"><div class="val-icon">❤️</div><h3>Carinho</h3><p>Cada criança é tratada com amor e atenção individualizada.</p></div>
-      <div class="val-card"><div class="val-icon">🛡️</div><h3>Segurança</h3><p>Ambiente protegido e supervisionado em todos os momentos.</p></div>
-      <div class="val-card"><div class="val-icon">💡</div><h3>Criatividade</h3><p>Estimulamos a imaginação e o pensamento criativo.</p></div>
-      <div class="val-card"><div class="val-icon">🌍</div><h3>Comunidade</h3><p>Construímos laços entre famílias, escola e crianças.</p></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="section-header">
-      <span class="pill">A Nossa Equipa</span>
-      <h2>Pessoas dedicadas às crianças</h2>
-    </div>
-    <div class="team-grid">
-      <div class="team-card"><div class="team-avatar">👩‍💼</div><h3>Diretora</h3><span>Direção da Associação</span></div>
-      <div class="team-card"><div class="team-avatar">👨‍🏫</div><h3>Coordenador ATL</h3><span>Coordenação Pedagógica</span></div>
-      <div class="team-card"><div class="team-avatar">👩‍🎨</div><h3>Animadora</h3><span>Atividades Criativas</span></div>
-      <div class="team-card"><div class="team-avatar">👨‍⚕️</div><h3>Resp. Desporto</h3><span>Atividade Física</span></div>
-    </div>
-  </section>
-
-  <div class="cta">
-    <h2>Quer conhecer-nos melhor?</h2>
-    <p>Venha visitar-nos ou entre em contacto — temos sempre a porta aberta para as famílias.</p>
-    <button class="btn btn-primary" data-goto="contact">Contacte-nos 👋</button>
-  </div>
-
-</div>
-
-<!-- ══════════════ ATIVIDADES ══════════════ -->
-<div class="page" id="page-activities">
-
-  <div class="page-hero">
-    <span class="pill">Programas & Horários</span>
-    <h1>As Nossas Atividades</h1>
-    <p>Um programa completo pensado para o desenvolvimento, alegria e bem-estar de cada criança.</p>
-  </div>
-
-  <section>
-    <div class="section-header">
-      <h2>Programa Semanal</h2>
-      <p>Horários organizados para equilibrar aprendizagem e diversão.</p>
-    </div>
-    <div class="sched-grid">
-      <div class="sched-card">
-        <div class="sched-head" style="background:linear-gradient(135deg,var(--blue),#0f5a96)">
-          <div class="icon">📚</div><div><h3>Segunda & Quarta</h3><p>Apoio Escolar + Leitura</p></div>
-        </div>
-        <div class="sched-body">
-          <div class="sched-row"><span class="sched-time">13:00</span><span>Acolhimento e almoço</span></div>
-          <div class="sched-row"><span class="sched-time">14:00</span><span>Apoio aos trabalhos de casa</span></div>
-          <div class="sched-row"><span class="sched-time">15:30</span><span>Hora do conto / Leitura livre</span></div>
-          <div class="sched-row"><span class="sched-time">16:00</span><span>Lanche</span></div>
-          <div class="sched-row"><span class="sched-time">16:30</span><span>Atividade livre / Jogos</span></div>
-        </div>
-      </div>
-      <div class="sched-card">
-        <div class="sched-head" style="background:linear-gradient(135deg,var(--orange),#c96118)">
-          <div class="icon">🎨</div><div><h3>Terça & Quinta</h3><p>Expressão Artística</p></div>
-        </div>
-        <div class="sched-body">
-          <div class="sched-row"><span class="sched-time" style="background:var(--orange)">13:00</span><span>Acolhimento e almoço</span></div>
-          <div class="sched-row"><span class="sched-time" style="background:var(--orange)">14:00</span><span>Apoio aos trabalhos de casa</span></div>
-          <div class="sched-row"><span class="sched-time" style="background:var(--orange)">15:30</span><span>Artes plásticas / Música</span></div>
-          <div class="sched-row"><span class="sched-time" style="background:var(--orange)">16:00</span><span>Lanche</span></div>
-          <div class="sched-row"><span class="sched-time" style="background:var(--orange)">16:30</span><span>Teatro / Expressão dramática</span></div>
-        </div>
-      </div>
-      <div class="sched-card">
-        <div class="sched-head" style="background:linear-gradient(135deg,#2ecc71,#27ae60)">
-          <div class="icon">⚽</div><div><h3>Sexta-Feira</h3><p>Desporto & Aventura</p></div>
-        </div>
-        <div class="sched-body">
-          <div class="sched-row"><span class="sched-time" style="background:#27ae60">13:00</span><span>Acolhimento e almoço</span></div>
-          <div class="sched-row"><span class="sched-time" style="background:#27ae60">14:00</span><span>Apoio aos trabalhos de casa</span></div>
-          <div class="sched-row"><span class="sched-time" style="background:#27ae60">15:30</span><span>Atividade desportiva ao ar livre</span></div>
-          <div class="sched-row"><span class="sched-time" style="background:#27ae60">16:00</span><span>Lanche</span></div>
-          <div class="sched-row"><span class="sched-time" style="background:#27ae60">16:30</span><span>Jogos em equipa / Convívio</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-gray">
-    <div class="section-header">
-      <span class="pill">Categorias</span>
-      <h2>Todas as Atividades</h2>
-    </div>
-    <div class="act-grid">
-      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#e8f4fd,#c8e6fa)">⚽</div><div class="act-body"><h3>Desporto & Movimento</h3><p>Futebol, basquetebol e jogos tradicionais portugueses.</p><span class="act-tag">Física</span></div></div>
-      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#fff8e8,#ffeab0)">🎨</div><div class="act-body"><h3>Artes Plásticas</h3><p>Pintura, escultura, colagens e técnicas diversas de expressão visual.</p><span class="act-tag" style="background:var(--orange)">Criativa</span></div></div>
-      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#f0e8ff,#d8c4ff)">🎵</div><div class="act-body"><h3>Música</h3><p>Iniciação musical, ritmo, canto coral e exploração de instrumentos.</p><span class="act-tag" style="background:#8e44ad">Artística</span></div></div>
-      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#efffee,#c8f5c8)">🌿</div><div class="act-body"><h3>Natureza & Ambiente</h3><p>Jardinagem, reciclagem criativa e descoberta do mundo natural.</p><span class="act-tag" style="background:#2ecc71">Ambiental</span></div></div>
-      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#ffeef0,#ffd0d4)">📚</div><div class="act-body"><h3>Leitura & Escrita</h3><p>Clube do livro, hora do conto e criação de histórias originais.</p><span class="act-tag" style="background:var(--red)">Educativa</span></div></div>
-      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#fff0e0,#ffd5a0)">🎭</div><div class="act-body"><h3>Teatro & Expressão</h3><p>Jogos dramáticos, fantoches e apresentações para a comunidade.</p><span class="act-tag" style="background:#e67e22">Expressiva</span></div></div>
-    </div>
-  </section>
-
-  <div class="cta">
-    <h2>Quer inscrever o seu filho? 🌟</h2>
-    <p>Entre em contacto connosco para saber mais sobre inscrições e disponibilidade.</p>
-    <button class="btn btn-primary" data-goto="contact">Contactar Agora</button>
-  </div>
-
-</div>
-
-<!-- ══════════════ CONTACTOS ══════════════ -->
-<div class="page" id="page-contact">
-
-  <div class="page-hero">
-    <span class="pill">Fale Connosco</span>
-    <h1>Contactos</h1>
-    <p>Estamos aqui para responder a todas as suas questões. Não hesite em entrar em contacto!</p>
-  </div>
-
-  <div class="contact-layout">
-    <div class="contact-info">
-      <h2>Onde nos encontrar</h2>
-      <div class="info-row"><div class="info-icon">📍</div><div class="info-text"><strong>Morada</strong><span>EB1/JI nº1 do Pragal<br>Almada, Portugal</span></div></div>
-      <div class="info-row"><div class="info-icon">📞</div><div class="info-text"><strong>Telefone</strong><span>+351 XXX XXX XXX</span></div></div>
-      <div class="info-row"><div class="info-icon">✉️</div><div class="info-text"><strong>Email</strong><span>geral@atlpragal.pt</span></div></div>
-      <div class="info-row"><div class="info-icon">🕐</div><div class="info-text"><strong>Horário</strong><span>Segunda a Sexta<br>13:00 – 19:00</span></div></div>
-    </div>
-
-    <div class="contact-form" id="contactFormContainer">
-      <div id="form-fields">
-        <h2>Envie-nos uma mensagem</h2>
-        <div class="form-row">
-          <div class="form-group"><label>Nome *</label><input type="text" id="f-name" placeholder="O seu nome"/></div>
-          <div class="form-group"><label>Apelido</label><input type="text" id="f-surname" placeholder="O seu apelido"/></div>
-        </div>
-        <div class="form-group"><label>Email *</label><input type="email" id="f-email" placeholder="email@exemplo.pt"/></div>
-        <div class="form-group">
-          <label>Assunto</label>
-          <select id="f-subject">
-            <option value="">Selecione um assunto</option>
-            <option>Informações sobre inscrições</option>
-            <option>Horários e atividades</option>
-            <option>Parceria / Voluntariado</option>
-            <option>Outro assunto</option>
-          </select>
-        </div>
-        <div class="form-group"><label>Mensagem *</label><textarea id="f-msg" placeholder="Escreva a sua mensagem aqui..."></textarea></div>
-        <button class="btn btn-primary btn-full" id="submitBtn">Enviar Mensagem 🚀</button>
-      </div>
-      <div id="form-success">
-        <div class="s-icon">🎉</div>
-        <h3>Mensagem enviada!</h3>
-        <p>Obrigado pelo contacto. Responderemos brevemente.</p>
-        <br>
-        <button class="btn btn-outline" id="resetBtn">Enviar outra mensagem</button>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-brand-top">
-        <img src="img\logo2.png" alt="Logo" onerror="this.style.display='none'"/>
+  <!-- ── NAVBAR ── -->
+  <nav>
+    <div class="nav-logo" id="navLogoBtn">
+      <img src="img\logo2.png" alt="Logo ATL" onerror="this.style.display='none'" />
+      <div>
         <strong>ATL Pragal</strong>
+        <span>EB1/JI nº1 do Pragal</span>
       </div>
-      <p>Associação de Pais e Encarregados de Educação da EB1/JI nº1 do Pragal.<br>Cuidamos dos tempos livres das crianças com carinho e dedicação.</p>
     </div>
-    <div class="footer-col">
-      <h4>Navegação</h4>
-      <ul>
-        <li><a data-goto="home">Início</a></li>
-        <li><a data-goto="about">Sobre Nós</a></li>
-        <li><a data-goto="activities">Atividades</a></li>
-        <li><a data-goto="contact">Contactos</a></li>
-      </ul>
+    <div class="nav-links" id="navLinks">
+      <a class="active" data-page="home">Início</a>
+      <a data-page="about">Sobre Nós</a>
+      <a data-page="activities">Atividades</a>
+      <a data-page="contact">Contactos</a>
     </div>
-    <div class="footer-col">
-      <h4>Contacto</h4>
-      <ul>
-        <li><a>EB1/JI nº1 do Pragal</a></li>
-        <li><a>Almada, Portugal</a></li>
-        <li><a>geral@atlpragal.pt</a></li>
-        <li><a>Seg–Sex: 13h–19h</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2025 ATL – Associação de Pais e Encarregados de Educação da EB1/JI nº1 do Pragal. Todos os direitos reservados.</p>
-  </div>
-</footer>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-<script src="js/main.js"></script>
+  <!-- ══════════════ HOME ══════════════ -->
+  <div class="page active" id="page-home">
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <span class="pill">🦒 Bem-vindos à ATL</span>
+          <h1>Um lugar onde as crianças <span>crescem, brincam e aprendem</span></h1>
+          <p>A Associação de Pais e Encarregados de Educação da EB1/JI nº1 do Pragal cuida dos seus filhos com carinho,
+            criatividade e dedicação nos tempos livres.</p>
+          <div class="hero-btns">
+            <button class="btn btn-primary" data-goto="activities">Ver Atividades 🎨</button>
+            <button class="btn btn-secondary" data-goto="contact">Fale Connosco</button>
+          </div>
+          <div class="hero-stats">
+            <div class="stat"><strong>+120</strong><span>Crianças</span></div>
+            <div class="stat"><strong>+15</strong><span>Atividades</span></div>
+            <div class="stat"><strong>10+</strong><span>Anos</span></div>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="img\logo2.png" alt="Mascote ATL – Girafa" />
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <span class="pill">O que fazemos</span>
+        <h2>Porquê escolher a ATL Pragal?</h2>
+        <p>Proporcionamos um ambiente seguro, alegre e estimulante para cada criança.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🏡</div>
+          <h3>Ambiente Seguro</h3>
+          <p>Espaços supervisionados por educadores qualificados, pensados para o bem-estar e segurança de cada criança.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎭</div>
+          <h3>Atividades Diversificadas</h3>
+          <p>Do desporto às artes, da música à leitura — temos algo para cada personalidade e interesse.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤝</div>
+          <h3>Parceria com as Famílias</h3>
+          <p>Mantemos os pais sempre informados e envolvidos no crescimento dos seus filhos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-gray">
+      <div class="section-header">
+        <span class="pill">Programas</span>
+        <h2>Atividades para todos os gostos</h2>
+        <p>Cada dia é uma nova aventura na ATL Pragal!</p>
+      </div>
+      <div class="act-grid">
+        <div class="act-card">
+          <div class="act-thumb" style="background:linear-gradient(135deg,#e8f4fd,#c8e6fa)">⚽</div>
+          <div class="act-body">
+            <h3>Desporto & Movimento</h3>
+            <p>Futebol, jogos tradicionais e atividade física para um desenvolvimento saudável.</p><span
+              class="act-tag">Diário</span>
+          </div>
+        </div>
+        <div class="act-card">
+          <div class="act-thumb" style="background:linear-gradient(135deg,#fff8e8,#ffeab0)">🎨</div>
+          <div class="act-body">
+            <h3>Artes & Criatividade</h3>
+            <p>Pintura, desenho, colagens e projetos artísticos que estimulam a imaginação.</p><span class="act-tag"
+              style="background:var(--orange)">Semanal</span>
+          </div>
+        </div>
+        <div class="act-card">
+          <div class="act-thumb" style="background:linear-gradient(135deg,#ffeef0,#ffd0d4)">📚</div>
+          <div class="act-body">
+            <h3>Apoio ao Estudo</h3>
+            <p>Acompanhamento nos trabalhos de casa num ambiente tranquilo e organizado.</p><span class="act-tag"
+              style="background:var(--red)">Diário</span>
+          </div>
+        </div>
+        <div class="act-card">
+          <div class="act-thumb" style="background:linear-gradient(135deg,#efffee,#c8f5c8)">🎵</div>
+          <div class="act-body">
+            <h3>Música & Teatro</h3>
+            <p>Expressão dramática e musical para desenvolver criatividade e confiança.</p><span class="act-tag"
+              style="background:#2ecc71">Semanal</span>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:2.5rem">
+        <button class="btn btn-primary" data-goto="activities">Ver todas as atividades →</button>
+      </div>
+    </section>
+
+    <div class="cta">
+      <h2>A sua família faz parte da nossa família 🦒</h2>
+      <p>Junte-se à comunidade ATL Pragal e dê às crianças os melhores tempos livres.</p>
+      <button class="btn btn-primary" data-goto="contact">Entrar em Contacto</button>
+    </div>
+
+  </div>
+
+  <!-- ══════════════ SOBRE NÓS ══════════════ -->
+  <div class="page" id="page-about">
+
+    <div class="page-hero">
+      <span class="pill">A Nossa História</span>
+      <h1>Sobre a ATL Pragal</h1>
+      <p>Uma associação criada por pais, para pais — com o único objetivo de cuidar e inspirar as crianças da nossa
+        comunidade.</p>
+    </div>
+
+    <div class="about-content">
+      <div class="about-block">
+        <div class="about-text">
+          <h2>Quem Somos</h2>
+          <p>A Associação de Pais e Encarregados de Educação da EB1/JI nº1 do Pragal é uma organização sem fins
+            lucrativos fundada com o objetivo de apoiar e enriquecer os tempos livres das crianças da escola.</p>
+          <p>Trabalhamos em conjunto com a escola e com as famílias para criar um ambiente acolhedor, estimulante e
+            seguro onde cada criança pode desenvolver as suas capacidades ao máximo.</p>
+        </div>
+        <div class="about-visual av-blue">🦒</div>
+      </div>
+      <div class="about-block rev">
+        <div class="about-text">
+          <h2>A Nossa Missão</h2>
+          <p>Promover o desenvolvimento integral das crianças através de atividades lúdicas, educativas e desportivas de
+            qualidade nos seus tempos livres.</p>
+          <p>Acreditamos que cada momento fora da sala de aula é uma oportunidade de aprender, crescer e criar memórias
+            felizes.</p>
+        </div>
+        <div class="about-visual av-orange">🌟</div>
+      </div>
+    </div>
+
+    <section class="bg-gray">
+      <div class="section-header">
+        <span class="pill">Os Nossos Valores</span>
+        <h2>O que nos guia</h2>
+      </div>
+      <div class="values-grid">
+        <div class="val-card">
+          <div class="val-icon">❤️</div>
+          <h3>Carinho</h3>
+          <p>Cada criança é tratada com amor e atenção individualizada.</p>
+        </div>
+        <div class="val-card">
+          <div class="val-icon">🛡️</div>
+          <h3>Segurança</h3>
+          <p>Ambiente protegido e supervisionado em todos os momentos.</p>
+        </div>
+        <div class="val-card">
+          <div class="val-icon">💡</div>
+          <h3>Criatividade</h3>
+          <p>Estimulamos a imaginação e o pensamento criativo.</p>
+        </div>
+        <div class="val-card">
+          <div class="val-icon">🌍</div>
+          <h3>Comunidade</h3>
+          <p>Construímos laços entre famílias, escola e crianças.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <span class="pill">A Nossa Equipa</span>
+        <h2>Pessoas dedicadas às crianças</h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">👩‍💼</div>
+          <h3>Diretora</h3><span>Direção da Associação</span>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">👨‍🏫</div>
+          <h3>Coordenador ATL</h3><span>Coordenação Pedagógica</span>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">👩‍🎨</div>
+          <h3>Animadora</h3><span>Atividades Criativas</span>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">👨‍⚕️</div>
+          <h3>Resp. Desporto</h3><span>Atividade Física</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta">
+      <h2>Quer conhecer-nos melhor?</h2>
+      <p>Venha visitar-nos ou entre em contacto — temos sempre a porta aberta para as famílias.</p>
+      <button class="btn btn-primary" data-goto="contact">Contacte-nos 👋</button>
+    </div>
+
+  </div>
+
+  <!-- ══════════════ ATIVIDADES ══════════════ -->
+  <div class="page" id="page-activities">
+
+    <div class="page-hero">
+      <span class="pill">Programas & Horários</span>
+      <h1>As Nossas Atividades</h1>
+      <p>Um programa completo pensado para o desenvolvimento, alegria e bem-estar de cada criança.</p>
+    </div>
+
+    <section>
+      <div class="section-header">
+        <h2>Programa Semanal</h2>
+        <p>Horários organizados para equilibrar aprendizagem e diversão.</p>
+      </div>
+      <div class="sched-grid">
+        <div class="sched-card">
+          <div class="sched-head" style="background:linear-gradient(135deg,var(--blue),#0f5a96)">
+            <div class="icon">📚</div>
+            <div>
+              <h3>Segunda & Quarta</h3>
+              <p>Apoio Escolar + Leitura</p>
+            </div>
+          </div>
+          <div class="sched-body">
+            <div class="sched-row"><span class="sched-time">13:00</span><span>Acolhimento e almoço</span></div>
+            <div class="sched-row"><span class="sched-time">14:00</span><span>Apoio aos trabalhos de casa</span></div>
+            <div class="sched-row"><span class="sched-time">15:30</span><span>Hora do conto / Leitura livre</span></div>
+            <div class="sched-row"><span class="sched-time">16:00</span><span>Lanche</span></div>
+            <div class="sched-row"><span class="sched-time">16:30</span><span>Atividade livre / Jogos</span></div>
+          </div>
+        </div>
+        <div class="sched-card">
+          <div class="sched-head" style="background:linear-gradient(135deg,var(--orange),#c96118)">
+            <div class="icon">🎨</div>
+            <div>
+              <h3>Terça & Quinta</h3>
+              <p>Expressão Artística</p>
+            </div>
+          </div>
+          <div class="sched-body">
+            <div class="sched-row"><span class="sched-time"
+                style="background:var(--orange)">13:00</span><span>Acolhimento e almoço</span></div>
+            <div class="sched-row"><span class="sched-time" style="background:var(--orange)">14:00</span><span>Apoio aos
+                trabalhos de casa</span></div>
+            <div class="sched-row"><span class="sched-time" style="background:var(--orange)">15:30</span><span>Artes
+                plásticas / Música</span></div>
+            <div class="sched-row"><span class="sched-time"
+                style="background:var(--orange)">16:00</span><span>Lanche</span></div>
+            <div class="sched-row"><span class="sched-time" style="background:var(--orange)">16:30</span><span>Teatro /
+                Expressão dramática</span></div>
+          </div>
+        </div>
+        <div class="sched-card">
+          <div class="sched-head" style="background:linear-gradient(135deg,#2ecc71,#27ae60)">
+            <div class="icon">⚽</div>
+            <div>
+              <h3>Sexta-Feira</h3>
+              <p>Desporto & Aventura</p>
+            </div>
+          </div>
+          <div class="sched-body">
+            <div class="sched-row"><span class="sched-time" style="background:#27ae60">13:00</span><span>Acolhimento e
+                almoço</span></div>
+            <div class="sched-row"><span class="sched-time" style="background:#27ae60">14:00</span><span>Apoio aos
+                trabalhos de casa</span></div>
+            <div class="sched-row"><span class="sched-time" style="background:#27ae60">15:30</span><span>Atividade
+                desportiva ao ar livre</span></div>
+            <div class="sched-row"><span class="sched-time" style="background:#27ae60">16:00</span><span>Lanche</span>
+            </div>
+            <div class="sched-row"><span class="sched-time" style="background:#27ae60">16:30</span><span>Jogos em equipa
+                / Convívio</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-gray">
+      <div class="section-header">
+        <span class="pill">Categorias</span>
+        <h2>Todas as Atividades</h2>
+      </div>
+      <div class="act-grid">
+        <div class="act-card">
+          <div class="act-thumb" style="background:linear-gradient(135deg,#e8f4fd,#c8e6fa)">⚽</div>
+          <div class="act-body">
+            <h3>Desporto & Movimento</h3>
+            <p>Futebol, basquetebol e jogos tradicionais portugueses.</p><span class="act-tag">Física</span>
+          </div>
+        </div>
+        <div class="act-card">
+          <div class="act-thumb" style="background:linear-gradient(135deg,#fff8e8,#ffeab0)">🎨</div>
+          <div class="act-body">
+            <h3>Artes Plásticas</h3>
+            <p>Pintura, escultura, colagens e técnicas diversas de expressão visual.</p><span class="act-tag"
+              style="background:var(--orange)">Criativa</span>
+          </div>
+        </div>
+        <div class="act-card">
+          <div class="act-thumb" style="background:linear-gradient(135deg,#f0e8ff,#d8c4ff)">🎵</div>
+          <div class="act-body">
+            <h3>Música</h3>
+            <p>Iniciação musical, ritmo, canto coral e exploração de instrumentos.</p><span class="act-tag"
+              style="background:#8e44ad">Artística</span>
+          </div>
+        </div>
+        <div class="act-card">
+          <div class="act-thumb" style="background:linear-gradient(135deg,#efffee,#c8f5c8)">🌿</div>
+          <div class="act-body">
+            <h3>Natureza & Ambiente</h3>
+            <p>Jardinagem, reciclagem criativa e descoberta do mundo natural.</p><span class="act-tag"
+              style="background:#2ecc71">Ambiental</span>
+          </div>
+        </div>
+        <div class="act-card">
+          <div class="act-thumb" style="background:linear-gradient(135deg,#ffeef0,#ffd0d4)">📚</div>
+          <div class="act-body">
+            <h3>Leitura & Escrita</h3>
+            <p>Clube do livro, hora do conto e criação de histórias originais.</p><span class="act-tag"
+              style="background:var(--red)">Educativa</span>
+          </div>
+        </div>
+        <div class="act-card">
+          <div class="act-thumb" style="background:linear-gradient(135deg,#fff0e0,#ffd5a0)">🎭</div>
+          <div class="act-body">
+            <h3>Teatro & Expressão</h3>
+            <p>Jogos dramáticos, fantoches e apresentações para a comunidade.</p><span class="act-tag"
+              style="background:#e67e22">Expressiva</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta">
+      <h2>Quer inscrever o seu filho? 🌟</h2>
+      <p>Entre em contacto connosco para saber mais sobre inscrições e disponibilidade.</p>
+      <button class="btn btn-primary" data-goto="contact">Contactar Agora</button>
+    </div>
+
+  </div>
+
+  <!-- ══════════════ CONTACTOS ══════════════ -->
+  <div class="page" id="page-contact">
+
+    <div class="page-hero">
+      <span class="pill">Fale Connosco</span>
+      <h1>Contactos</h1>
+      <p>Estamos aqui para responder a todas as suas questões. Não hesite em entrar em contacto!</p>
+    </div>
+
+    <div class="contact-layout">
+      <div class="contact-info">
+        <h2>Onde nos encontrar</h2>
+        <div class="info-row">
+          <div class="info-icon">📍</div>
+          <div class="info-text"><strong>Morada</strong><span>EB1/JI nº1 do Pragal<br>Almada, Portugal</span></div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📞</div>
+          <div class="info-text"><strong>Telefone</strong><span>+351 XXX XXX XXX</span></div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">✉️</div>
+          <div class="info-text"><strong>Email</strong><span>geral@atlpragal.pt</span></div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🕐</div>
+          <div class="info-text"><strong>Horário</strong><span>Segunda a Sexta<br>13:00 – 19:00</span></div>
+        </div>
+      </div>
+
+      <div class="contact-form" id="contactFormContainer">
+        <div id="form-fields">
+          <h2>Envie-nos uma mensagem</h2>
+          <div class="form-row">
+            <div class="form-group"><label>Nome *</label><input type="text" id="f-name" placeholder="O seu nome" />
+            </div>
+            <div class="form-group"><label>Apelido</label><input type="text" id="f-surname"
+                placeholder="O seu apelido" /></div>
+          </div>
+          <div class="form-group"><label>Email *</label><input type="email" id="f-email"
+              placeholder="email@exemplo.pt" /></div>
+          <div class="form-group">
+            <label>Assunto</label>
+            <select id="f-subject">
+              <option value="">Selecione um assunto</option>
+              <option>Informações sobre inscrições</option>
+              <option>Horários e atividades</option>
+              <option>Parceria / Voluntariado</option>
+              <option>Outro assunto</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Mensagem *</label><textarea id="f-msg"
+              placeholder="Escreva a sua mensagem aqui..."></textarea></div>
+          <button class="btn btn-primary btn-full" id="submitBtn">Enviar Mensagem 🚀</button>
+        </div>
+        <div id="form-success">
+          <div class="s-icon">🎉</div>
+          <h3>Mensagem enviada!</h3>
+          <p>Obrigado pelo contacto. Responderemos brevemente.</p>
+          <br>
+          <button class="btn btn-outline" id="resetBtn">Enviar outra mensagem</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-top">
+          <img src="img\logo2.png" alt="Logo" onerror="this.style.display='none'" />
+          <strong>ATL Pragal</strong>
+        </div>
+        <p>Associação de Pais e Encarregados de Educação da EB1/JI nº1 do Pragal.<br>Cuidamos dos tempos livres das
+          crianças com carinho e dedicação.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a data-goto="home">Início</a></li>
+          <li><a data-goto="about">Sobre Nós</a></li>
+          <li><a data-goto="activities">Atividades</a></li>
+          <li><a data-goto="contact">Contactos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a>EB1/JI nº1 do Pragal</a></li>
+          <li><a>Almada, Portugal</a></li>
+          <li><a>geral@atlpragal.pt</a></li>
+          <li><a>Seg–Sex: 13h–19h</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 ATL – Associação de Pais e Encarregados de Educação da EB1/JI nº1 do Pragal. Todos os direitos
+        reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
+
 </html>
