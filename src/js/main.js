@@ -7,6 +7,47 @@ const PAGE_ORDER = {
     activities: 2,
     contact: 3,
 };
+const TURNSTILE_SITE_KEY = '0x4AAAAAAClJQZMxeU_-KHD8';
+// ── Turnstile State ─────────────────────────────────────────────────────────
+let turnstileWidgetId = null;
+let turnstileToken = null;
+let turnstileReady = false;
+function initTurnstile() {
+    const container = document.getElementById('turnstile-container');
+    if (!container || turnstileWidgetId)
+        return;
+    turnstileWidgetId = turnstile.render(container, {
+        sitekey: TURNSTILE_SITE_KEY,
+        theme: 'light',
+        language: 'pt',
+        callback: (token) => {
+            turnstileToken = token;
+            turnstileReady = true;
+            setTurnstileError(false);
+        },
+        'expired-callback': () => {
+            turnstileToken = null;
+            turnstileReady = false;
+        },
+        'error-callback': () => {
+            turnstileToken = null;
+            turnstileReady = false;
+            setTurnstileError(true);
+        },
+    });
+}
+function resetTurnstile() {
+    // if (turnstileWidgetId && window.turnstile) {
+    //   window.turnstile.reset(turnstileWidgetId);
+    // }
+    // turnstileToken = null;
+    // turnstileReady = false;
+}
+function setTurnstileError(show) {
+    const el = document.getElementById('turnstile-error');
+    if (el)
+        el.style.display = show ? 'block' : 'none';
+}
 // ── Navigation ─────────────────────────────────────────────────────────────
 function navigateTo(pageId) {
     var _a;
@@ -28,6 +69,10 @@ function navigateTo(pageId) {
     (_a = document.getElementById('navLinks')) === null || _a === void 0 ? void 0 : _a.classList.remove('open');
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Lazily init Turnstile the first time the contact page is shown
+    if (pageId === 'contact') {
+        initTurnstile();
+    }
 }
 function toggleMobileMenu() {
     var _a;
@@ -35,17 +80,22 @@ function toggleMobileMenu() {
 }
 // ── Contact Form ────────────────────────────────────────────────────────────
 function getFormData() {
-    var _a, _b, _c, _d, _e;
-    const nome = (_a = document.getElementById('f-name')) === null || _a === void 0 ? void 0 : _a.value.trim();
-    const apelido = (_b = document.getElementById('f-surname')) === null || _b === void 0 ? void 0 : _b.value.trim();
+    var _a, _b, _c, _d, _e, _f;
+    const forename = (_a = document.getElementById('f-name')) === null || _a === void 0 ? void 0 : _a.value.trim();
+    const surname = (_b = document.getElementById('f-surname')) === null || _b === void 0 ? void 0 : _b.value.trim();
     const email = (_c = document.getElementById('f-email')) === null || _c === void 0 ? void 0 : _c.value.trim();
-    const assunto = (_d = document.getElementById('f-subject')) === null || _d === void 0 ? void 0 : _d.value;
-    const mensagem = (_e = document.getElementById('f-msg')) === null || _e === void 0 ? void 0 : _e.value.trim();
-    if (!nome || !email || !mensagem) {
+    const subject = (_d = document.getElementById('f-subject')) === null || _d === void 0 ? void 0 : _d.value;
+    const message = (_e = document.getElementById('f-msg')) === null || _e === void 0 ? void 0 : _e.value.trim();
+    if (!forename || !email || !message) {
         alert('Por favor preencha os campos obrigatórios (*).');
         return null;
     }
-    return { nome, apelido, email, assunto, mensagem };
+    if (!turnstileReady || !turnstileToken) {
+        setTurnstileError(true);
+        (_f = document.getElementById('turnstile-container')) === null || _f === void 0 ? void 0 : _f.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return null;
+    }
+    return { forename, surname, email, subject, message, turnstileToken };
 }
 function showFormSuccess() {
     const fields = document.getElementById('form-fields');
@@ -79,6 +129,7 @@ async function submitForm() {
         btn.textContent = 'A enviar...';
     }
     try {
+        console.log(JSON.stringify(data));
         // ── FUTURE: Azure Function integration ──────────────────────────────
         // const response = await fetch('/api/contact', {
         //   method:  'POST',

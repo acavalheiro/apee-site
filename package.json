@@ -9,6 +9,7 @@
     "lint": "tsc --noEmit"
   },
   "devDependencies": {
+    "@types/cloudflare-turnstile": "^0.2.2",
     "typescript": "^5.4.0"
   }
 }

@@ -14,6 +14,7 @@
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body>
@@ -431,6 +432,15 @@
           </div>
           <div class="form-group"><label>Mensagem *</label><textarea id="f-msg"
               placeholder="Escreva a sua mensagem aqui..."></textarea></div>
+
+          <!-- CAPTCHA -->
+          <div class="form-group">
+            <label>Verificação de segurança *</label>
+            <div id="turnstile-container"></div>
+            <span id="turnstile-error" class="field-error" style="display:none;">
+              ⚠️ Por favor confirme que não é um robô.
+            </span>
+          </div>
           <button class="btn btn-primary btn-full" id="submitBtn">Enviar Mensagem 🚀</button>
         </div>
         <div id="form-success">

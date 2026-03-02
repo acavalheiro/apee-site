@@ -9,7 +9,7 @@
     "outDir": "src/js",
     "rootDir": "src/ts",
     "sourceMap": true,
-    "removeComments": false
+    "removeComments": false,
   },
   "include": ["src/ts/**/*.ts"],
   "exclude": ["node_modules"]

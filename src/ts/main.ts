@@ -3,11 +3,12 @@
 type PageId = 'home' | 'about' | 'activities' | 'contact';
 
 interface ContactFormData {
-  nome:      string;
-  apelido:   string;
+  forename:      string;
+  surname:   string;
   email:     string;
-  assunto:   string;
-  mensagem:  string;
+  subject:   string;
+  message:  string;
+  turnstileToken: string;
 }
 
 interface ApiResponse {
@@ -23,6 +24,55 @@ const PAGE_ORDER: Record<PageId, number> = {
   activities: 2,
   contact:    3,
 };
+
+const TURNSTILE_SITE_KEY = '0x4AAAAAAClJQZMxeU_-KHD8';
+
+// ── Turnstile State ─────────────────────────────────────────────────────────
+
+let turnstileWidgetId: string | null | undefined= null;
+let turnstileToken:    string | null = null;
+let turnstileReady                   = false;
+
+function initTurnstile(): void {
+  const container = document.getElementById('turnstile-container');
+  if (!container || turnstileWidgetId) return;
+
+  turnstileWidgetId = turnstile.render(container, {
+    sitekey:  TURNSTILE_SITE_KEY,
+    theme:    'light',
+    language: 'pt',
+
+    callback: (token: string) => {
+      turnstileToken = token;
+      turnstileReady = true;
+      setTurnstileError(false);
+    },
+
+    'expired-callback': () => {
+      turnstileToken = null;
+      turnstileReady = false;
+    },
+
+    'error-callback': () => {
+      turnstileToken = null;
+      turnstileReady = false;
+      setTurnstileError(true);
+    },
+  });
+}
+
+function resetTurnstile(): void {
+  // if (turnstileWidgetId && window.turnstile) {
+  //   window.turnstile.reset(turnstileWidgetId);
+  // }
+  // turnstileToken = null;
+  // turnstileReady = false;
+}
+
+function setTurnstileError(show: boolean): void {
+  const el = document.getElementById('turnstile-error');
+  if (el) el.style.display = show ? 'block' : 'none';
+}
 
 // ── Navigation ─────────────────────────────────────────────────────────────
 
@@ -47,6 +97,11 @@ function navigateTo(pageId: PageId): void {
 
   // Scroll to top
   window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Lazily init Turnstile the first time the contact page is shown
+  if (pageId === 'contact') {
+    initTurnstile();
+  }
 }
 
 function toggleMobileMenu(): void {
@@ -56,18 +111,25 @@ function toggleMobileMenu(): void {
 // ── Contact Form ────────────────────────────────────────────────────────────
 
 function getFormData(): ContactFormData | null {
-  const nome     = (document.getElementById('f-name')    as HTMLInputElement)?.value.trim();
-  const apelido  = (document.getElementById('f-surname') as HTMLInputElement)?.value.trim();
+  const forename     = (document.getElementById('f-name')    as HTMLInputElement)?.value.trim();
+  const surname  = (document.getElementById('f-surname') as HTMLInputElement)?.value.trim();
   const email    = (document.getElementById('f-email')   as HTMLInputElement)?.value.trim();
-  const assunto  = (document.getElementById('f-subject') as HTMLSelectElement)?.value;
-  const mensagem = (document.getElementById('f-msg')     as HTMLTextAreaElement)?.value.trim();
+  const subject  = (document.getElementById('f-subject') as HTMLSelectElement)?.value;
+  const message = (document.getElementById('f-msg')     as HTMLTextAreaElement)?.value.trim();
 
-  if (!nome || !email || !mensagem) {
+  if (!forename || !email || !message) {
     alert('Por favor preencha os campos obrigatórios (*).');
     return null;
   }
 
-  return { nome, apelido, email, assunto, mensagem };
+   if (!turnstileReady || !turnstileToken) {
+    setTurnstileError(true);
+    document.getElementById('turnstile-container')
+      ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return null;
+  }
+
+  return { forename, surname, email, subject, message, turnstileToken };
 }
 
 function showFormSuccess(): void {
@@ -100,6 +162,7 @@ async function submitForm(): Promise<void> {
   }
 
   try {
+    console.log(  JSON.stringify(data));
     // ── FUTURE: Azure Function integration ──────────────────────────────
     // const response = await fetch('/api/contact', {
     //   method:  'POST',
