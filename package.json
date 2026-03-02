@@ -1,0 +1,14 @@
+{
+  "name": "atl-pragal",
+  "version": "1.0.0",
+  "description": "Site ATL – EB1/JI nº1 do Pragal",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "dev": "tsc --watch & npx serve src",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "module": "ES2015",
+    "lib": ["ES2015", "ES2017", "DOM"],
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "outDir": "src/js",
+    "rootDir": "src/ts",
+    "sourceMap": true,
+    "removeComments": false
+  },
+  "include": ["src/ts/**/*.ts"],
+  "exclude": ["node_modules"]
+}
