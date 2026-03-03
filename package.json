@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "Site ATL – EB1/JI nº1 do Pragal",
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc --watch",
-    "dev": "tsc --watch & npx serve src",
-    "lint": "tsc --noEmit"
+    "build":   "tsc --noEmit && esbuild src/ts/main.ts --bundle --outfile=src/js/main.js --minify",
+    "watch":   "esbuild src/ts/main.ts --bundle --outfile=src/js/main.js --sourcemap --watch",
+    "dev":     "npm run watch & npx serve src",
+    "lint":    "tsc --noEmit",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@types/cloudflare-turnstile": "^0.2.2",
-    "typescript": "^5.4.0"
+    "typescript": "^5.4.0",
+    "esbuild":    "^0.21.0",
+    "serve":      "^14.2.0"
   }
 }

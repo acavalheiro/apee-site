@@ -9,6 +9,7 @@
     href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;600;700;800&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/i18n.css" />
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
@@ -29,11 +30,16 @@
       </div>
     </div>
     <div class="nav-links" id="navLinks">
-      <a class="active" data-page="home">Início</a>
-      <a data-page="about">Sobre Nós</a>
-      <a data-page="team">Equipa</a>
-      <a data-page="activities">Atividades</a>
-      <a data-page="contact">Contactos</a>
+      <a class="active" data-page="home" data-i18n="nav.home"></a>
+      <a data-page="about" data-i18n="nav.about"></a>
+      <a data-page="team" data-i18n="nav.team"></a>
+      <a data-page="activities" data-i18n="nav.activities"></a>
+      <a data-page="contact" data-i18n="nav.contact"></a>
+    </div>
+    <!-- Language switcher — sits next to hamburger -->
+    <div class="lang-switcher">
+      <button class="lang-btn lang-btn--active" data-lang-btn="pt">PT</button>
+      <button class="lang-btn" data-lang-btn="en">EN</button>
     </div>
     <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -46,18 +52,23 @@
     <section class="hero">
       <div class="hero-inner">
         <div class="hero-text">
-          <span class="pill">🦒 Bem-vindos à ATL</span>
-          <h1>Um lugar onde as crianças <span>crescem, brincam e aprendem</span></h1>
-          <p>A Associação de Pais e Encarregados de Educação da EB1/JI nº1 do Pragal cuida dos seus filhos com carinho,
-            criatividade e dedicação nos tempos livres.</p>
+          <span class="pill" data-i18n="home.hero.pill">🦒</span>
+          <h1>
+            <!-- Two-part heading: plain text + coloured span -->
+            <span data-i18n="home.hero.title"></span>
+            <span class="hero-title-break"> </span>
+            <span style="color:var(--orange)" data-i18n="home.hero.title.span"></span>
+          </h1>
+
+          <p data-i18n="home.hero.description"></p>
           <div class="hero-btns">
             <button class="btn btn-primary" data-goto="activities">Ver Atividades 🎨</button>
             <button class="btn btn-secondary" data-goto="contact">Fale Connosco</button>
           </div>
           <div class="hero-stats">
-            <div class="stat"><strong>+120</strong><span>Crianças</span></div>
-            <div class="stat"><strong>+15</strong><span>Atividades</span></div>
-            <div class="stat"><strong>10+</strong><span>Anos</span></div>
+            <div class="stat"><strong>+120</strong><span data-i18n="home.hero.stat.children"></span></div>
+            <div class="stat"><strong>+15</strong> <span data-i18n="home.hero.stat.activities"></span></div>
+            <div class="stat"><strong>10+</strong> <span data-i18n="home.hero.stat.years"></span></div>
           </div>
         </div>
         <div class="hero-image">
@@ -244,234 +255,250 @@
      EQUIPA — paste this block into index.html
      after the page-activities div
 ══════════════════════════════════════════ -->
-<div class="page" id="page-team">
+  <div class="page" id="page-team">
 
-  <!-- Hero -->
-  <div class="page-hero team-hero">
-    <div class="team-hero-bg"></div>
-    <div class="team-hero-content">
-      <span class="pill">❤️ A Nossa Equipa</span>
-      <h1>As pessoas que fazem a magia acontecer</h1>
-      <p>Conhece os profissionais dedicados que todos os dias colocam o sorriso no rosto das nossas crianças.</p>
+    <!-- Hero -->
+    <div class="page-hero team-hero">
+      <div class="team-hero-bg"></div>
+      <div class="team-hero-content">
+        <span class="pill">❤️ A Nossa Equipa</span>
+        <h1>As pessoas que fazem a magia acontecer</h1>
+        <p>Conhece os profissionais dedicados que todos os dias colocam o sorriso no rosto das nossas crianças.</p>
+      </div>
+      <div class="team-hero-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+      </div>
     </div>
-    <div class="team-hero-shapes">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
-      <div class="shape shape-3"></div>
-    </div>
-  </div>
 
-  <!-- Stats bar -->
-  <div class="team-stats-bar">
-    <div class="team-stat">
-      <strong>8</strong>
-      <span>Colaboradores</span>
+    <!-- Stats bar -->
+    <div class="team-stats-bar">
+      <div class="team-stat">
+        <strong>8</strong>
+        <span>Colaboradores</span>
+      </div>
+      <div class="team-stat-divider"></div>
+      <div class="team-stat">
+        <strong>+40</strong>
+        <span>Anos de experiência combinada</span>
+      </div>
+      <div class="team-stat-divider"></div>
+      <div class="team-stat">
+        <strong>+120</strong>
+        <span>Crianças acompanhadas</span>
+      </div>
+      <div class="team-stat-divider"></div>
+      <div class="team-stat">
+        <strong>100%</strong>
+        <span>Dedicação</span>
+      </div>
     </div>
-    <div class="team-stat-divider"></div>
-    <div class="team-stat">
-      <strong>+40</strong>
-      <span>Anos de experiência combinada</span>
-    </div>
-    <div class="team-stat-divider"></div>
-    <div class="team-stat">
-      <strong>+120</strong>
-      <span>Crianças acompanhadas</span>
-    </div>
-    <div class="team-stat-divider"></div>
-    <div class="team-stat">
-      <strong>100%</strong>
-      <span>Dedicação</span>
-    </div>
-  </div>
 
-  <!-- Direction -->
-  <section>
-    <div class="section-header">
-      <span class="pill">Liderança</span>
-      <h2>Direção</h2>
-      <p>A equipa que guia a nossa associação com visão e compromisso.</p>
-    </div>
-    <div class="staff-featured-grid">
+    <!-- Direction -->
+    <section>
+      <div class="section-header">
+        <span class="pill">Liderança</span>
+        <h2>Direção</h2>
+        <p>A equipa que guia a nossa associação com visão e compromisso.</p>
+      </div>
+      <div class="staff-featured-grid">
 
-      <div class="staff-card staff-card--featured">
-        <div class="staff-card__photo-wrap">
-          <div class="staff-card__photo staff-card__photo--placeholder">
-            <span>👩‍💼</span>
+        <div class="staff-card staff-card--featured">
+          <div class="staff-card__photo-wrap">
+            <div class="staff-card__photo staff-card__photo--placeholder">
+              <span>👩‍💼</span>
+            </div>
+            <div class="staff-card__badge">Presidente</div>
           </div>
-          <div class="staff-card__badge">Presidente</div>
+          <div class="staff-card__body">
+            <h3>Maria João Silva</h3>
+            <p class="staff-card__role">Presidente da Direção</p>
+            <p class="staff-card__bio">Mãe de dois alunos e fundadora da associação. Apaixonada por educação e pelo
+              bem-estar das crianças da nossa comunidade.</p>
+            <div class="staff-card__tags">
+              <span class="staff-tag">Gestão</span>
+              <span class="staff-tag">Educação</span>
+              <span class="staff-tag">Comunidade</span>
+            </div>
+          </div>
         </div>
-        <div class="staff-card__body">
-          <h3>Maria João Silva</h3>
-          <p class="staff-card__role">Presidente da Direção</p>
-          <p class="staff-card__bio">Mãe de dois alunos e fundadora da associação. Apaixonada por educação e pelo bem-estar das crianças da nossa comunidade.</p>
-          <div class="staff-card__tags">
-            <span class="staff-tag">Gestão</span>
-            <span class="staff-tag">Educação</span>
-            <span class="staff-tag">Comunidade</span>
+
+        <div class="staff-card staff-card--featured">
+          <div class="staff-card__photo-wrap">
+            <div class="staff-card__photo staff-card__photo--placeholder"
+              style="background:linear-gradient(135deg,#fff3e0,#ffe0b2)">
+              <span>👨‍💼</span>
+            </div>
+            <div class="staff-card__badge staff-card__badge--orange">Vice-Presidente</div>
+          </div>
+          <div class="staff-card__body">
+            <h3>António Ferreira</h3>
+            <p class="staff-card__role">Vice-Presidente</p>
+            <p class="staff-card__bio">Encarregado de educação e voluntário há 5 anos. Responsável pela coordenação dos
+              eventos e atividades especiais.</p>
+            <div class="staff-card__tags">
+              <span class="staff-tag">Coordenação</span>
+              <span class="staff-tag">Eventos</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Educators -->
+    <section class="bg-gray">
+      <div class="section-header">
+        <span class="pill">Educadores</span>
+        <h2>A Nossa Equipa Pedagógica</h2>
+        <p>Profissionais qualificados que acompanham as crianças todos os dias com carinho e competência.</p>
+      </div>
+      <div class="staff-grid">
+
+        <div class="staff-card">
+          <div class="staff-card__photo-wrap">
+            <div class="staff-card__photo staff-card__photo--placeholder"
+              style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9)">
+              <span>👩‍🏫</span>
+            </div>
+          </div>
+          <div class="staff-card__body">
+            <h3>Carla Mendes</h3>
+            <p class="staff-card__role">Coordenadora Pedagógica</p>
+            <p class="staff-card__bio">Licenciada em Educação Básica com 12 anos de experiência. Especialista em
+              desenvolvimento infantil e atividades lúdicas.</p>
+            <div class="staff-card__tags">
+              <span class="staff-tag staff-tag--green">Pedagogia</span>
+              <span class="staff-tag staff-tag--green">Coordenação</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="staff-card">
+          <div class="staff-card__photo-wrap">
+            <div class="staff-card__photo staff-card__photo--placeholder"
+              style="background:linear-gradient(135deg,#fce4ec,#f8bbd0)">
+              <span>👩‍🎨</span>
+            </div>
+          </div>
+          <div class="staff-card__body">
+            <h3>Sofia Rodrigues</h3>
+            <p class="staff-card__role">Animadora Sociocultural</p>
+            <p class="staff-card__bio">Especialista em artes plásticas e expressão dramática. Traz criatividade e
+              alegria a cada sessão de atividades.</p>
+            <div class="staff-card__tags">
+              <span class="staff-tag staff-tag--pink">Artes</span>
+              <span class="staff-tag staff-tag--pink">Teatro</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="staff-card">
+          <div class="staff-card__photo-wrap">
+            <div class="staff-card__photo staff-card__photo--placeholder"
+              style="background:linear-gradient(135deg,#e3f2fd,#bbdefb)">
+              <span>👨‍🏫</span>
+            </div>
+          </div>
+          <div class="staff-card__body">
+            <h3>Rui Baptista</h3>
+            <p class="staff-card__role">Monitor Desportivo</p>
+            <p class="staff-card__bio">Licenciado em Desporto e Educação Física. Promove hábitos saudáveis e o espírito
+              de equipa através do desporto.</p>
+            <div class="staff-card__tags">
+              <span class="staff-tag">Desporto</span>
+              <span class="staff-tag">Saúde</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="staff-card">
+          <div class="staff-card__photo-wrap">
+            <div class="staff-card__photo staff-card__photo--placeholder"
+              style="background:linear-gradient(135deg,#f3e5f5,#e1bee7)">
+              <span>👩‍🎵</span>
+            </div>
+          </div>
+          <div class="staff-card__body">
+            <h3>Ana Lopes</h3>
+            <p class="staff-card__role">Educadora Musical</p>
+            <p class="staff-card__bio">Formada em Educação Musical pelo Conservatório. Desenvolve a sensibilidade
+              artística e o ritmo nas crianças.</p>
+            <div class="staff-card__tags">
+              <span class="staff-tag staff-tag--purple">Música</span>
+              <span class="staff-tag staff-tag--purple">Ritmo</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="staff-card">
+          <div class="staff-card__photo-wrap">
+            <div class="staff-card__photo staff-card__photo--placeholder"
+              style="background:linear-gradient(135deg,#e8f5e9,#dcedc8)">
+              <span>👨‍🌿</span>
+            </div>
+          </div>
+          <div class="staff-card__body">
+            <h3>Pedro Alves</h3>
+            <p class="staff-card__role">Monitor de Natureza</p>
+            <p class="staff-card__bio">Biólogo de formação e educador ambiental. Desperta nas crianças o amor pela
+              natureza e a consciência ecológica.</p>
+            <div class="staff-card__tags">
+              <span class="staff-tag staff-tag--green">Natureza</span>
+              <span class="staff-tag staff-tag--green">Ambiente</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="staff-card">
+          <div class="staff-card__photo-wrap">
+            <div class="staff-card__photo staff-card__photo--placeholder"
+              style="background:linear-gradient(135deg,#fff8e1,#ffecb3)">
+              <span>👩‍💻</span>
+            </div>
+          </div>
+          <div class="staff-card__body">
+            <h3>Inês Costa</h3>
+            <p class="staff-card__role">Apoio Educativo</p>
+            <p class="staff-card__bio">Especialista em necessidades educativas especiais. Garante que todas as crianças
+              recebem o apoio de que necessitam.</p>
+            <div class="staff-card__tags">
+              <span class="staff-tag staff-tag--yellow">Inclusão</span>
+              <span class="staff-tag staff-tag--yellow">Apoio</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Join us -->
+    <section>
+      <div class="join-us-block">
+        <div class="join-us-text">
+          <span class="pill">Junta-te a nós</span>
+          <h2>Quer fazer parte da nossa equipa?</h2>
+          <p>Estamos sempre à procura de pessoas apaixonadas por crianças e educação. Se tens o perfil certo,
+            gostaríamos muito de te conhecer!</p>
+          <button class="btn btn-primary" data-goto="contact">Envia a tua candidatura 🚀</button>
+        </div>
+        <div class="join-us-visual">
+          <div class="join-emoji-grid">
+            <span>🎨</span><span>⚽</span><span>📚</span>
+            <span>🎵</span><span>🌿</span><span>🦒</span>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="staff-card staff-card--featured">
-        <div class="staff-card__photo-wrap">
-          <div class="staff-card__photo staff-card__photo--placeholder" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2)">
-            <span>👨‍💼</span>
-          </div>
-          <div class="staff-card__badge staff-card__badge--orange">Vice-Presidente</div>
-        </div>
-        <div class="staff-card__body">
-          <h3>António Ferreira</h3>
-          <p class="staff-card__role">Vice-Presidente</p>
-          <p class="staff-card__bio">Encarregado de educação e voluntário há 5 anos. Responsável pela coordenação dos eventos e atividades especiais.</p>
-          <div class="staff-card__tags">
-            <span class="staff-tag">Coordenação</span>
-            <span class="staff-tag">Eventos</span>
-          </div>
-        </div>
-      </div>
-
+    <div class="cta">
+      <h2>A nossa equipa está à tua espera 🦒</h2>
+      <p>Tens dúvidas ou queres saber mais sobre a nossa equipa? Fala connosco!</p>
+      <button class="btn btn-primary" data-goto="contact">Entrar em Contacto</button>
     </div>
-  </section>
 
-  <!-- Educators -->
-  <section class="bg-gray">
-    <div class="section-header">
-      <span class="pill">Educadores</span>
-      <h2>A Nossa Equipa Pedagógica</h2>
-      <p>Profissionais qualificados que acompanham as crianças todos os dias com carinho e competência.</p>
-    </div>
-    <div class="staff-grid">
-
-      <div class="staff-card">
-        <div class="staff-card__photo-wrap">
-          <div class="staff-card__photo staff-card__photo--placeholder" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9)">
-            <span>👩‍🏫</span>
-          </div>
-        </div>
-        <div class="staff-card__body">
-          <h3>Carla Mendes</h3>
-          <p class="staff-card__role">Coordenadora Pedagógica</p>
-          <p class="staff-card__bio">Licenciada em Educação Básica com 12 anos de experiência. Especialista em desenvolvimento infantil e atividades lúdicas.</p>
-          <div class="staff-card__tags">
-            <span class="staff-tag staff-tag--green">Pedagogia</span>
-            <span class="staff-tag staff-tag--green">Coordenação</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="staff-card">
-        <div class="staff-card__photo-wrap">
-          <div class="staff-card__photo staff-card__photo--placeholder" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0)">
-            <span>👩‍🎨</span>
-          </div>
-        </div>
-        <div class="staff-card__body">
-          <h3>Sofia Rodrigues</h3>
-          <p class="staff-card__role">Animadora Sociocultural</p>
-          <p class="staff-card__bio">Especialista em artes plásticas e expressão dramática. Traz criatividade e alegria a cada sessão de atividades.</p>
-          <div class="staff-card__tags">
-            <span class="staff-tag staff-tag--pink">Artes</span>
-            <span class="staff-tag staff-tag--pink">Teatro</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="staff-card">
-        <div class="staff-card__photo-wrap">
-          <div class="staff-card__photo staff-card__photo--placeholder" style="background:linear-gradient(135deg,#e3f2fd,#bbdefb)">
-            <span>👨‍🏫</span>
-          </div>
-        </div>
-        <div class="staff-card__body">
-          <h3>Rui Baptista</h3>
-          <p class="staff-card__role">Monitor Desportivo</p>
-          <p class="staff-card__bio">Licenciado em Desporto e Educação Física. Promove hábitos saudáveis e o espírito de equipa através do desporto.</p>
-          <div class="staff-card__tags">
-            <span class="staff-tag">Desporto</span>
-            <span class="staff-tag">Saúde</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="staff-card">
-        <div class="staff-card__photo-wrap">
-          <div class="staff-card__photo staff-card__photo--placeholder" style="background:linear-gradient(135deg,#f3e5f5,#e1bee7)">
-            <span>👩‍🎵</span>
-          </div>
-        </div>
-        <div class="staff-card__body">
-          <h3>Ana Lopes</h3>
-          <p class="staff-card__role">Educadora Musical</p>
-          <p class="staff-card__bio">Formada em Educação Musical pelo Conservatório. Desenvolve a sensibilidade artística e o ritmo nas crianças.</p>
-          <div class="staff-card__tags">
-            <span class="staff-tag staff-tag--purple">Música</span>
-            <span class="staff-tag staff-tag--purple">Ritmo</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="staff-card">
-        <div class="staff-card__photo-wrap">
-          <div class="staff-card__photo staff-card__photo--placeholder" style="background:linear-gradient(135deg,#e8f5e9,#dcedc8)">
-            <span>👨‍🌿</span>
-          </div>
-        </div>
-        <div class="staff-card__body">
-          <h3>Pedro Alves</h3>
-          <p class="staff-card__role">Monitor de Natureza</p>
-          <p class="staff-card__bio">Biólogo de formação e educador ambiental. Desperta nas crianças o amor pela natureza e a consciência ecológica.</p>
-          <div class="staff-card__tags">
-            <span class="staff-tag staff-tag--green">Natureza</span>
-            <span class="staff-tag staff-tag--green">Ambiente</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="staff-card">
-        <div class="staff-card__photo-wrap">
-          <div class="staff-card__photo staff-card__photo--placeholder" style="background:linear-gradient(135deg,#fff8e1,#ffecb3)">
-            <span>👩‍💻</span>
-          </div>
-        </div>
-        <div class="staff-card__body">
-          <h3>Inês Costa</h3>
-          <p class="staff-card__role">Apoio Educativo</p>
-          <p class="staff-card__bio">Especialista em necessidades educativas especiais. Garante que todas as crianças recebem o apoio de que necessitam.</p>
-          <div class="staff-card__tags">
-            <span class="staff-tag staff-tag--yellow">Inclusão</span>
-            <span class="staff-tag staff-tag--yellow">Apoio</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Join us -->
-  <section>
-    <div class="join-us-block">
-      <div class="join-us-text">
-        <span class="pill">Junta-te a nós</span>
-        <h2>Quer fazer parte da nossa equipa?</h2>
-        <p>Estamos sempre à procura de pessoas apaixonadas por crianças e educação. Se tens o perfil certo, gostaríamos muito de te conhecer!</p>
-        <button class="btn btn-primary" data-goto="contact">Envia a tua candidatura 🚀</button>
-      </div>
-      <div class="join-us-visual">
-        <div class="join-emoji-grid">
-          <span>🎨</span><span>⚽</span><span>📚</span>
-          <span>🎵</span><span>🌿</span><span>🦒</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="cta">
-    <h2>A nossa equipa está à tua espera 🦒</h2>
-    <p>Tens dúvidas ou queres saber mais sobre a nossa equipa? Fala connosco!</p>
-    <button class="btn btn-primary" data-goto="contact">Entrar em Contacto</button>
-  </div>
-
-</div><!-- /team -->
+  </div><!-- /team -->
 
   <!-- ══════════════ ATIVIDADES ══════════════ -->
   <div class="page" id="page-activities">
@@ -627,101 +654,115 @@
         <h2>Onde nos encontrar</h2>
         <div class="info-row">
           <div class="info-icon">📍</div>
-          <div class="info-text"><strong>Morada</strong><span>EB1/JI nº1 do Pragal<br>Almada, Portugal</span></div>
+          <div class="info-text">
+            <strong data-i18n="contact.info.address"></strong>
+            <span data-i18n-html="contact.info.address.val"></span>
+          </div>
         </div>
         <div class="info-row">
           <div class="info-icon">📞</div>
-          <div class="info-text"><strong>Telefone</strong><span>+351 XXX XXX XXX</span></div>
+          <div class="info-text"><strong data-i18n="contact.info.phone"></strong><span>+351 XXX XXX XXX</span></div>
         </div>
         <div class="info-row">
           <div class="info-icon">✉️</div>
-          <div class="info-text"><strong>Email</strong><span>geral@atlpragal.pt</span></div>
+          <div class="info-text"><strong data-i18n="contact.info.email"></strong><span>geral@atlpragal.pt</span></div>
         </div>
         <div class="info-row">
           <div class="info-icon">🕐</div>
-          <div class="info-text"><strong>Horário</strong><span>Segunda a Sexta<br>13:00 – 19:00</span></div>
+          <div class="info-text">
+            <strong data-i18n="contact.info.hours"></strong>
+            <span data-i18n-html="contact.info.hours.val"></span>
+          </div>
         </div>
       </div>
 
       <div class="contact-form" id="contactFormContainer">
-        <div id="form-fields">
-          <h2>Envie-nos uma mensagem</h2>
-          <div class="form-row">
-            <div class="form-group"><label>Nome *</label><input type="text" id="f-name" placeholder="O seu nome" />
-            </div>
-            <div class="form-group"><label>Apelido</label><input type="text" id="f-surname"
-                placeholder="O seu apelido" /></div>
-          </div>
-          <div class="form-group"><label>Email *</label><input type="email" id="f-email"
-              placeholder="email@exemplo.pt" /></div>
-          <div class="form-group">
-            <label>Assunto</label>
-            <select id="f-subject">
-              <option value="">Selecione um assunto</option>
-              <option>Informações sobre inscrições</option>
-              <option>Horários e atividades</option>
-              <option>Parceria / Voluntariado</option>
-              <option>Outro assunto</option>
-            </select>
-          </div>
-          <div class="form-group"><label>Mensagem *</label><textarea id="f-msg"
-              placeholder="Escreva a sua mensagem aqui..."></textarea></div>
-
-          <!-- CAPTCHA -->
-          <div class="form-group">
-            <label>Verificação de segurança *</label>
-            <div id="turnstile-container"></div>
-            <span id="turnstile-error" class="field-error" style="display:none;">
-              ⚠️ Por favor confirme que não é um robô.
-            </span>
-          </div>
-          <button class="btn btn-primary btn-full" id="submitBtn">Enviar Mensagem 🚀</button>
-        </div>
-        <div id="form-success">
-          <div class="s-icon">🎉</div>
-          <h3>Mensagem enviada!</h3>
-          <p>Obrigado pelo contacto. Responderemos brevemente.</p>
-          <br>
-          <button class="btn btn-outline" id="resetBtn">Enviar outra mensagem</button>
-        </div>
+  <div id="form-fields">
+    <h2 data-i18n="contact.form.title"></h2>
+    <div class="form-row">
+      <div class="form-group">
+        <label data-i18n="contact.form.name"></label>
+        <input type="text" id="f-name" data-i18n-placeholder="contact.form.name.ph"/>
+      </div>
+      <div class="form-group">
+        <label data-i18n="contact.form.surname"></label>
+        <input type="text" id="f-surname" data-i18n-placeholder="contact.form.surname.ph"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label data-i18n="contact.form.email"></label>
+      <input type="email" id="f-email" data-i18n-placeholder="contact.form.email.ph"/>
+    </div>
+    <div class="form-group">
+      <label data-i18n="contact.form.subject"></label>
+      <select id="f-subject">
+        <option value="" data-i18n="contact.form.subject.ph"></option>
+        <option data-i18n="contact.form.subject.1"></option>
+        <option data-i18n="contact.form.subject.2"></option>
+        <option data-i18n="contact.form.subject.3"></option>
+        <option data-i18n="contact.form.subject.4"></option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label data-i18n="contact.form.message"></label>
+      <textarea id="f-msg" data-i18n-placeholder="contact.form.message.ph"></textarea>
+    </div>
+    <div class="form-group">
+      <label data-i18n="contact.form.captcha"></label>
+      <div id="turnstile-container"></div>
+      <span id="turnstile-error" class="field-error" style="display:none"
+            data-i18n="contact.form.captcha.err"></span>
+    </div>
+    <button class="btn btn-primary btn-full" id="submitBtn"
+            data-i18n="contact.form.submit"></button>
+  </div>
+  <div id="form-success">
+    <div class="s-icon">🎉</div>
+    <h3 data-i18n="contact.form.success.title"></h3>
+    <p  data-i18n="contact.form.success.desc"></p>
+    <br/>
+    <button class="btn btn-outline" id="resetBtn"
+            data-i18n="contact.form.success.btn"></button>
+  </div>
+</div>
       </div>
     </div>
 
   </div>
 
   <!-- ── FOOTER ── -->
+  <!-- ⑦ FOOTER -->
   <footer>
     <div class="footer-inner">
       <div>
         <div class="footer-brand-top">
-          <img src="img\logo2.png" alt="Logo" onerror="this.style.display='none'" />
+          <img src="logo2.png" alt="Logo" onerror="this.style.display='none'" />
           <strong>ATL Pragal</strong>
         </div>
-        <p>Associação de Pais e Encarregados de Educação da EB1/JI nº1 do Pragal.<br>Cuidamos dos tempos livres das
-          crianças com carinho e dedicação.</p>
+        <p data-i18n="footer.description"></p>
       </div>
       <div class="footer-col">
-        <h4>Navegação</h4>
+        <h4 data-i18n="footer.nav.title"></h4>
         <ul>
-          <li><a data-goto="home">Início</a></li>
-          <li><a data-goto="about">Sobre Nós</a></li>
-          <li><a data-goto="activities">Atividades</a></li>
-          <li><a data-goto="contact">Contactos</a></li>
+          <li><a data-goto="home" data-i18n="nav.home"></a></li>
+          <li><a data-goto="about" data-i18n="nav.about"></a></li>
+          <li><a data-goto="activities" data-i18n="nav.activities"></a></li>
+          <li><a data-goto="team" data-i18n="nav.team"></a></li>
+          <li><a data-goto="contact" data-i18n="nav.contact"></a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Contacto</h4>
+        <h4 data-i18n="footer.contact.title"></h4>
         <ul>
           <li><a>EB1/JI nº1 do Pragal</a></li>
           <li><a>Almada, Portugal</a></li>
           <li><a>geral@atlpragal.pt</a></li>
-          <li><a>Seg–Sex: 13h–19h</a></li>
+          <li><a data-i18n="footer.hours"></a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 ATL – Associação de Pais e Encarregados de Educação da EB1/JI nº1 do Pragal. Todos os direitos
-        reservados.</p>
+      <p data-i18n="footer.copyright"></p>
     </div>
   </footer>
 

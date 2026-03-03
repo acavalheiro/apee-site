@@ -1,13 +1,16 @@
-// ── Types ──────────────────────────────────────────────────────────────────
+// ── src/ts/main.ts ─────────────────────────────────────────────────────────
+import { initI18n, t, setLocale, type Locale } from './i18n/i18n';
 
-type PageId = 'home' | 'about' | 'team' |'activities' | 'contact';
+// ── Types ───────────────────────────────────────────────────────────────────
+
+type PageId = 'home' | 'about' | 'activities' | 'team' | 'contact';
 
 interface ContactFormData {
-  forename:      string;
-  surname:   string;
-  email:     string;
-  subject:   string;
-  message:  string;
+  nome:           string;
+  apelido:        string;
+  email:          string;
+  assunto:        string;
+  mensagem:       string;
   turnstileToken: string;
 }
 
@@ -16,58 +19,68 @@ interface ApiResponse {
   message?: string;
 }
 
-// ── Constants ──────────────────────────────────────────────────────────────
+interface TurnstileOptions {
+  sitekey:             string;
+  theme?:              'light' | 'dark' | 'auto';
+  language?:           string;
+  callback:            (token: string) => void;
+  'expired-callback'?: () => void;
+  'error-callback'?:   () => void;
+}
+
+declare global {
+  interface Window {
+    turnstile: {
+      render:      (container: string | HTMLElement, options: TurnstileOptions) => string;
+      reset:       (widgetId: string) => void;
+      remove:      (widgetId: string) => void;
+      getResponse: (widgetId: string) => string | undefined;
+    };
+    onTurnstileLoad: () => void;
+  }
+}
+
+// ── Constants ────────────────────────────────────────────────────────────────
 
 const PAGE_ORDER: Record<PageId, number> = {
   home:       0,
   about:      1,
-  team:       2,
-  activities: 3,
+  activities: 2,
+  team:       3,
   contact:    4,
 };
 
-const TURNSTILE_SITE_KEY = '0x4AAAAAAClJQZMxeU_-KHD8';
+const TURNSTILE_SITE_KEY = '0x4AAAAAAAAAAAAAAAAAAAAAAAAA'; // ← substitui pela tua chave
 
-// ── Turnstile State ─────────────────────────────────────────────────────────
+// ── Turnstile ────────────────────────────────────────────────────────────────
 
-let turnstileWidgetId: string | null | undefined= null;
+let turnstileWidgetId: string | null = null;
 let turnstileToken:    string | null = null;
 let turnstileReady                   = false;
 
 function initTurnstile(): void {
   const container = document.getElementById('turnstile-container');
-  if (!container || turnstileWidgetId) return;
+  if (!container || !window.turnstile || turnstileWidgetId) return;
 
-  turnstileWidgetId = turnstile.render(container, {
+  turnstileWidgetId = window.turnstile.render(container, {
     sitekey:  TURNSTILE_SITE_KEY,
     theme:    'light',
-    language: 'pt',
+    language: document.documentElement.lang ?? 'pt',
 
     callback: (token: string) => {
       turnstileToken = token;
       turnstileReady = true;
       setTurnstileError(false);
     },
-
-    'expired-callback': () => {
-      turnstileToken = null;
-      turnstileReady = false;
-    },
-
-    'error-callback': () => {
-      turnstileToken = null;
-      turnstileReady = false;
-      setTurnstileError(true);
-    },
+    'expired-callback': () => { turnstileToken = null; turnstileReady = false; },
+    'error-callback':   () => { turnstileToken = null; turnstileReady = false; setTurnstileError(true); },
   });
 }
 
 function resetTurnstile(): void {
-  // if (turnstileWidgetId && window.turnstile) {
-  //   window.turnstile.reset(turnstileWidgetId);
-  // }
-  // turnstileToken = null;
-  // turnstileReady = false;
+  if (turnstileWidgetId && window.turnstile) window.turnstile.reset(turnstileWidgetId);
+  turnstileToken = null;
+  turnstileReady = false;
 }
 
 function setTurnstileError(show: boolean): void {
@@ -75,62 +88,55 @@ function setTurnstileError(show: boolean): void {
   if (el) el.style.display = show ? 'block' : 'none';
 }
 
-// ── Navigation ─────────────────────────────────────────────────────────────
+window.onTurnstileLoad = (): void => {
+  const contactPage = document.getElementById('page-contact');
+  if (contactPage?.classList.contains('active')) initTurnstile();
+};
+
+// ── Navigation ───────────────────────────────────────────────────────────────
 
 function navigateTo(pageId: PageId): void {
-  // Hide all pages
-  document.querySelectorAll<HTMLElement>('.page').forEach(p => {
-    p.classList.remove('active');
-  });
+  document.querySelectorAll<HTMLElement>('.page').forEach(p => p.classList.remove('active'));
 
-  // Show target page
   const target = document.getElementById(`page-${pageId}`);
   if (target) target.classList.add('active');
 
-  // Update nav active state
   const navLinks = document.querySelectorAll<HTMLAnchorElement>('.nav-links a');
   navLinks.forEach(a => a.classList.remove('active'));
-  const activeLink = navLinks[PAGE_ORDER[pageId]];
-  if (activeLink) activeLink.classList.add('active');
+  navLinks[PAGE_ORDER[pageId]]?.classList.add('active');
 
-  // Close mobile menu
   document.getElementById('navLinks')?.classList.remove('open');
-
-  // Scroll to top
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // Lazily init Turnstile the first time the contact page is shown
-  if (pageId === 'contact') {
-    initTurnstile();
-  }
+  if (pageId === 'contact') initTurnstile();
 }
 
 function toggleMobileMenu(): void {
   document.getElementById('navLinks')?.classList.toggle('open');
 }
 
-// ── Contact Form ────────────────────────────────────────────────────────────
+// ── Contact Form ─────────────────────────────────────────────────────────────
 
 function getFormData(): ContactFormData | null {
-  const forename     = (document.getElementById('f-name')    as HTMLInputElement)?.value.trim();
-  const surname  = (document.getElementById('f-surname') as HTMLInputElement)?.value.trim();
+  const nome     = (document.getElementById('f-name')    as HTMLInputElement)?.value.trim();
+  const apelido  = (document.getElementById('f-surname') as HTMLInputElement)?.value.trim();
   const email    = (document.getElementById('f-email')   as HTMLInputElement)?.value.trim();
-  const subject  = (document.getElementById('f-subject') as HTMLSelectElement)?.value;
-  const message = (document.getElementById('f-msg')     as HTMLTextAreaElement)?.value.trim();
+  const assunto  = (document.getElementById('f-subject') as HTMLSelectElement)?.value;
+  const mensagem = (document.getElementById('f-msg')     as HTMLTextAreaElement)?.value.trim();
 
-  if (!forename || !email || !message) {
-    alert('Por favor preencha os campos obrigatórios (*).');
+  if (!nome || !email || !mensagem) {
+    alert(t('contact.form.validation.required'));
     return null;
   }
 
-   if (!turnstileReady || !turnstileToken) {
+  if (!turnstileReady || !turnstileToken) {
     setTurnstileError(true);
     document.getElementById('turnstile-container')
       ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return null;
   }
 
-  return { forename, surname, email, subject, message, turnstileToken };
+  return { nome, apelido, email, assunto, mensagem, turnstileToken };
 }
 
 function showFormSuccess(): void {
@@ -141,11 +147,12 @@ function showFormSuccess(): void {
 }
 
 function resetForm(): void {
-  const fieldIds = ['f-name', 'f-surname', 'f-email', 'f-subject', 'f-msg'] as const;
-  fieldIds.forEach(id => {
+  (['f-name', 'f-surname', 'f-email', 'f-subject', 'f-msg'] as const).forEach(id => {
     const el = document.getElementById(id) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | null;
     if (el) el.value = '';
   });
+  resetTurnstile();
+  setTurnstileError(false);
   const fields  = document.getElementById('form-fields');
   const success = document.getElementById('form-success');
   if (fields)  fields.style.display  = 'block';
@@ -157,48 +164,34 @@ async function submitForm(): Promise<void> {
   if (!data) return;
 
   const btn = document.getElementById('submitBtn') as HTMLButtonElement | null;
-  if (btn) {
-    btn.disabled     = true;
-    btn.textContent  = 'A enviar...';
-  }
+  if (btn) { btn.disabled = true; btn.textContent = t('contact.form.sending'); }
 
   try {
-    console.log(  JSON.stringify(data));
-    // ── FUTURE: Azure Function integration ──────────────────────────────
-    // const response = await fetch('/api/contact', {
-    //   method:  'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body:    JSON.stringify(data),
-    // });
-    //
-    // if (!response.ok) {
-    //   const err: ApiResponse = await response.json();
-    //   throw new Error(err.message ?? 'Erro ao enviar mensagem.');
-    // }
-    // ────────────────────────────────────────────────────────────────────
+    const response = await fetch('/api/contact', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(data),
+    });
 
-    // Simulate async for now (remove when API is live)
-    await new Promise<void>(resolve => setTimeout(resolve, 600));
+    const result: ApiResponse = await response.json();
+    if (!response.ok) throw new Error(result.message ?? t('contact.form.error.generic'));
 
     showFormSuccess();
   } catch (error) {
-    const message = error instanceof Error ? error.message : 'Erro desconhecido.';
-    alert(`Erro: ${message} Por favor tente novamente.`);
+    const message = error instanceof Error ? error.message : t('contact.form.error.generic');
+    alert(message);
+    resetTurnstile();
   } finally {
-    if (btn) {
-      btn.disabled    = false;
-      btn.textContent = 'Enviar Mensagem 🚀';
-    }
+    if (btn) { btn.disabled = false; btn.textContent = t('contact.form.submit'); }
   }
 }
 
-// ── Event Listeners ─────────────────────────────────────────────────────────
+// ── Event Listeners ──────────────────────────────────────────────────────────
 
 function bindEvents(): void {
-  // Nav logo → home
-  document.getElementById('navLogoBtn')?.addEventListener('click', () => navigateTo('home'));
+  document.getElementById('navLogoBtn')
+    ?.addEventListener('click', () => navigateTo('home'));
 
-  // Nav links
   document.querySelectorAll<HTMLAnchorElement>('.nav-links a[data-page]').forEach(link => {
     link.addEventListener('click', () => {
       const page = link.dataset.page as PageId;
@@ -206,7 +199,6 @@ function bindEvents(): void {
     });
   });
 
-  // All [data-goto] buttons (hero, cta, footer, etc.)
   document.querySelectorAll<HTMLElement>('[data-goto]').forEach(el => {
     el.addEventListener('click', () => {
       const page = el.dataset.goto as PageId;
@@ -214,19 +206,33 @@ function bindEvents(): void {
     });
   });
 
-  // Hamburger
-  document.getElementById('hamburgerBtn')?.addEventListener('click', toggleMobileMenu);
+  document.getElementById('hamburgerBtn')
+    ?.addEventListener('click', toggleMobileMenu);
 
-  // Contact form submit
-  document.getElementById('submitBtn')?.addEventListener('click', () => void submitForm());
+  document.getElementById('submitBtn')
+    ?.addEventListener('click', () => void submitForm());
 
-  // Contact form reset
-  document.getElementById('resetBtn')?.addEventListener('click', resetForm);
+  document.getElementById('resetBtn')
+    ?.addEventListener('click', resetForm);
+
+  // Re-apply translations when locale changes (lang switcher handled by i18n.ts)
+  document.addEventListener('localeChanged', () => {
+    // Reset Turnstile with new language if on contact page
+    if (turnstileWidgetId && window.turnstile) {
+      window.turnstile.remove(turnstileWidgetId);
+      turnstileWidgetId = null;
+      turnstileToken    = null;
+      turnstileReady    = false;
+      const contactPage = document.getElementById('page-contact');
+      if (contactPage?.classList.contains('active')) initTurnstile();
+    }
+  });
 }
 
-// ── Init ────────────────────────────────────────────────────────────────────
+// ── Init ─────────────────────────────────────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', () => {
+  initI18n();   // ← must come first: detects locale + applies translations
   bindEvents();
   navigateTo('home');
 });
