@@ -48,31 +48,59 @@ jobs:
         with:
           azcliversion: latest
           inlineScript: |
-            # Upload all files in src/ to the $web container
+            STORAGE_ACCOUNT="${{ secrets.AZURE_STORAGE_ACCOUNT }}"
+            CONTAINER="\$web"
+
+            echo "Uploading to storage account: $STORAGE_ACCOUNT"
+
             az storage blob upload-batch \
-              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-              --source ./src \
-              --destination '$web' \
+              --account-name "$STORAGE_ACCOUNT" \
+              --source "./src" \
+              --destination "$CONTAINER" \
               --overwrite true \
               --auth-mode login
 
-            # Set correct content types for key file types
+            # Fix content types for critical files
             az storage blob update \
-              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-              --container-name '$web' \
-              --name 'index.html' \
-              --content-type 'text/html; charset=utf-8' \
+              --account-name "$STORAGE_ACCOUNT" \
+              --container-name "$CONTAINER" \
+              --name "index.html" \
+              --content-type "text/html; charset=utf-8" \
+              --auth-mode login
+
+            az storage blob update \
+              --account-name "$STORAGE_ACCOUNT" \
+              --container-name "$CONTAINER" \
+              --name "css/styles.css" \
+              --content-type "text/css; charset=utf-8" \
+              --auth-mode login
+
+            az storage blob update \
+              --account-name "$STORAGE_ACCOUNT" \
+              --container-name "$CONTAINER" \
+              --name "js/main.js" \
+              --content-type "application/javascript; charset=utf-8" \
               --auth-mode login
 
       - name: Purge Cloudflare Cache
         env:
-          CLOUDFLARE_ZONE_ID:  ${{ secrets.CLOUDFLARE_ZONE_ID }}
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ZONE_ID:   ${{ secrets.CLOUDFLARE_ZONE_ID }}
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
-          curl -s -X POST "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/purge_cache" \
-            -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+          RESPONSE=$(curl -s -X POST \
+            "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/purge_cache" \
+            -H "Authorization: Bearer ${CF_API_TOKEN}" \
             -H "Content-Type: application/json" \
-            --data '{"purge_everything":true}' | jq '.success'
+            --data '{"purge_everything":true}')
+
+          echo "Cloudflare response: $RESPONSE"
+
+          SUCCESS=$(echo "$RESPONSE" | python3 -c "import sys,json; print(json.load(sys.stdin)['success'])")
+          if [ "$SUCCESS" != "True" ]; then
+            echo "Cloudflare cache purge failed!"
+            exit 1
+          fi
+          echo "Cloudflare cache purged successfully."
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
