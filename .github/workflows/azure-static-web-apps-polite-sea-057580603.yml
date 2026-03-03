@@ -1,4 +1,4 @@
-name: Azure Static Web Apps CI/CD
+name: Deploy ATL Pragal → Azure Storage
 
 on:
   push:
@@ -14,15 +14,14 @@ jobs:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
-    permissions:
-      id-token: write
-      contents: read
+
     steps:
       - uses: actions/checkout@v3
         with:
           submodules: true
           lfs: false
 
+      # ── Build ────────────────────────────────────────────────────────────
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -38,36 +37,47 @@ jobs:
       - name: Bundle with esbuild
         run: npm run build
 
-      - name: Install OIDC Client from Core Package
-        run: npm install @actions/core@1.6.0 @actions/http-client
-
-      - name: Get Id Token
-        uses: actions/github-script@v6
-        id: idtoken
+      # ── Deploy to Azure Storage ──────────────────────────────────────────
+      - name: Login to Azure
+        uses: azure/login@v2
         with:
-          script: |
-            const coredemo = require('@actions/core')
-            return await coredemo.getIDToken()
-          result-encoding: string
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Build And Deploy
-        id: builddeploy
-        uses: Azure/static-web-apps-deploy@v1
+      - name: Upload to Azure Storage (Static Website)
+        uses: azure/cli@v2
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_POLITE_SEA_057580603 }}
-          action: "upload"
-          app_location: "./src"
-          api_location: ""
-          output_location: "."
-          github_id_token: ${{ steps.idtoken.outputs.result }}
+          azcliversion: latest
+          inlineScript: |
+            # Upload all files in src/ to the $web container
+            az storage blob upload-batch \
+              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
+              --source ./src \
+              --destination '$web' \
+              --overwrite true \
+              --auth-mode login
+
+            # Set correct content types for key file types
+            az storage blob update \
+              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
+              --container-name '$web' \
+              --name 'index.html' \
+              --content-type 'text/html; charset=utf-8' \
+              --auth-mode login
+
+      - name: Purge Cloudflare Cache
+        env:
+          CLOUDFLARE_ZONE_ID:  ${{ secrets.CLOUDFLARE_ZONE_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          curl -s -X POST "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/purge_cache" \
+            -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}' | jq '.success'
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
     name: Close Pull Request Job
     steps:
-      - name: Close Pull Request
-        id: closepullrequest
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          action: "close"
+      - name: Comment PR closed
+        run: echo "PR closed — no action needed for static storage hosting."
