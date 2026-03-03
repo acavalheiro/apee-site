@@ -4,8 +4,9 @@
 const PAGE_ORDER = {
     home: 0,
     about: 1,
-    activities: 2,
-    contact: 3,
+    team: 2,
+    activities: 3,
+    contact: 4,
 };
 const TURNSTILE_SITE_KEY = '0x4AAAAAAClJQZMxeU_-KHD8';
 // ── Turnstile State ─────────────────────────────────────────────────────────
