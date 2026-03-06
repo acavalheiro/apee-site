@@ -27,20 +27,17 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Restore
-        run: dotnet restore ${{ env.PROJECT_PATH }}
-
-      - name: Build
-        run: dotnet build ${{ env.PROJECT_PATH }} --configuration Release --no-restore
-
       - name: Publish
-        run: dotnet publish ${{ env.PROJECT_PATH }} --configuration Release --no-build --output ./publish
+        run: dotnet publish ${{ env.PROJECT_PATH }} --configuration Release --output ./publish
+
+      - name: Zip publish output
+        run: cd ./publish && zip -r ../function-app.zip .
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: function-app
-          path: ./publish
+          path: ./function-app.zip
           if-no-files-found: error
 
   deploy:
@@ -54,7 +51,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: function-app
-          path: ./publish
+          path: ./artifact
 
       - name: Login to Azure
         uses: azure/login@v2
@@ -64,6 +61,5 @@ jobs:
       - name: Deploy to Azure Functions
         uses: Azure/functions-action@v1
         with:
-          app-name:        ${{ secrets.AZURE_FUNCTIONAPP_NAME }}
-          package:         ./publish
-          respect-funcignore: true
+          app-name: ${{ secrets.AZURE_FUNCTIONAPP_NAME }}
+          package:  ./artifact/function-app.zip
