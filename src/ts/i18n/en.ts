@@ -132,7 +132,7 @@ export const en = {
   'contact.hero.description':    "We're here to answer all your questions. Don't hesitate to get in touch!",
   'contact.info.title':          'Find us',
   'contact.info.address':        'Address',
-  'contact.info.address.val':    'EB1/JI nº1 do Pragal<br>Almada, Portugal',
+  'contact.info.address.val': 'Rua Conde D. Henrique<br>2800-562 Almada, Portugal',
   'contact.info.phone':          'Phone',
   'contact.info.email':          'Email',
   'contact.info.hours':          'Opening Hours',

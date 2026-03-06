@@ -124,11 +124,11 @@
     "contact.hero.description": "Estamos aqui para responder a todas as suas quest\xF5es. N\xE3o hesite em entrar em contacto!",
     "contact.info.title": "Onde nos encontrar",
     "contact.info.address": "Morada",
-    "contact.info.address.val": "EB1/JI n\xBA1 do Pragal<br>Almada, Portugal",
+    "contact.info.address.val": "Rua Conde D. Henrique<br>2800-562 Almada, Portugal",
     "contact.info.phone": "Telefone",
     "contact.info.email": "Email",
     "contact.info.hours": "Hor\xE1rio",
-    "contact.info.hours.val": "Segunda a Sexta<br>13:00 \u2013 19:00",
+    "contact.info.hours.val": "Segunda a Sexta<br>09:00 \u2013 19:00",
     "contact.form.title": "Envie-nos uma mensagem",
     "contact.form.name": "Nome *",
     "contact.form.name.ph": "O seu nome",
@@ -159,7 +159,7 @@
     "footer.nav.title": "Navega\xE7\xE3o",
     "footer.contact.title": "Contacto",
     "footer.hours": "Seg\u2013Sex: 13h\u201319h",
-    "footer.copyright": "\xA9 2025 ATL \u2013 Associa\xE7\xE3o de Pais e Encarregados de Educa\xE7\xE3o da EB1/JI n\xBA1 do Pragal. Todos os direitos reservados."
+    "footer.copyright": "\xA9 2026 ATL \u2013 Associa\xE7\xE3o de Pais e Encarregados de Educa\xE7\xE3o da EB1/JI N\xBA1 do Pragal. Todos os direitos reservados."
   };
 
   // src/ts/i18n/en.ts
@@ -286,7 +286,7 @@
     "contact.hero.description": "We're here to answer all your questions. Don't hesitate to get in touch!",
     "contact.info.title": "Find us",
     "contact.info.address": "Address",
-    "contact.info.address.val": "EB1/JI n\xBA1 do Pragal<br>Almada, Portugal",
+    "contact.info.address.val": "Rua Conde D. Henrique<br>2800-562 Almada, Portugal",
     "contact.info.phone": "Phone",
     "contact.info.email": "Email",
     "contact.info.hours": "Opening Hours",
@@ -411,7 +411,7 @@
     team: 3,
     contact: 4
   };
-  var TURNSTILE_SITE_KEY = "1x00000000000000000000AA";
+  var TURNSTILE_SITE_KEY = "0x4AAAAAAClJQZMxeU_-KHD8";
   var turnstileWidgetId = null;
   var turnstileToken = null;
   var turnstileReady = false;
@@ -509,7 +509,7 @@
       btn.textContent = t("contact.form.sending");
     }
     try {
-      const response = await fetch("http://localhost:7205/api/contact", {
+      const response = await fetch("https://api.apee-pragal.org/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
