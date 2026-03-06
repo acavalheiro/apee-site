@@ -50,7 +50,7 @@ const PAGE_ORDER: Record<PageId, number> = {
   contact:    4,
 };
 
-const TURNSTILE_SITE_KEY = '1x00000000000000000000AA';
+const TURNSTILE_SITE_KEY = '0x4AAAAAAClJQZMxeU_-KHD8';
 
 // ── Turnstile ────────────────────────────────────────────────────────────────
 

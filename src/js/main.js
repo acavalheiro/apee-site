@@ -411,7 +411,7 @@
     team: 3,
     contact: 4
   };
-  var TURNSTILE_SITE_KEY = "1x00000000000000000000AA";
+  var TURNSTILE_SITE_KEY = "0x4AAAAAAClJQZMxeU_-KHD8";
   var turnstileWidgetId = null;
   var turnstileToken = null;
   var turnstileReady = false;
