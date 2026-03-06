@@ -13,6 +13,7 @@ var host = new HostBuilder()
     {
         config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: false);
         config.AddJsonFile($"appsettings.{ctx.HostingEnvironment.EnvironmentName}.json", optional: true, reloadOnChange: false);
+        config.AddEnvironmentVariables();
     })
     .ConfigureServices((ctx, services) =>
     {
