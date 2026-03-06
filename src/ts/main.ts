@@ -167,7 +167,7 @@ async function submitForm(): Promise<void> {
   if (btn) { btn.disabled = true; btn.textContent = t('contact.form.sending'); }
 
   try {
-    const response = await fetch('http://localhost:7205/api/contact', {
+    const response = await fetch('https://api.apee-pragal.org/api/contact', {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
       body:    JSON.stringify(data),
