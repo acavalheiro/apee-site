@@ -1,0 +1,59 @@
+/* ══════════════════════════════════════════════════════
+   LANGUAGE SWITCHER — append to src/css/styles.css
+══════════════════════════════════════════════════════ */
+
+/* ── Language Switcher ─────────────────────────────── */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+  margin-left: .75rem;
+  padding-left: .75rem;
+  border-left: 1.5px solid #e8e8e8;
+}
+
+.lang-btn {
+  background: none;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: .25rem .55rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: .8rem;
+  font-weight: 800;
+  color: #999;
+  cursor: pointer;
+  transition: all .2s;
+  line-height: 1;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+.lang-btn:hover {
+  color: var(--blue);
+  border-color: var(--blue);
+  background: rgba(26, 124, 196, .06);
+}
+
+.lang-btn--active {
+  color: var(--blue);
+  border-color: var(--blue);
+  background: rgba(26, 124, 196, .08);
+}
+
+/* Separator dot between PT / EN */
+.lang-btn + .lang-btn::before {
+  content: '·';
+  color: #ddd;
+  margin-right: .25rem;
+  font-weight: 400;
+  pointer-events: none;
+}
+
+/* ── Smooth locale transition ──────────────────────── */
+.page {
+  transition: opacity .15s ease;
+}
+
+.locale-changing .page.active {
+  opacity: 0;
+}
