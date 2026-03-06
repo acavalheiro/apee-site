@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="Apee.Api/Apee.Api.csproj" />
+  <Project Path="Apee.Shared/Apee.Shared.csproj" Id="bedddc62-43da-4df5-b624-3e7547147114" />
 </Solution>
