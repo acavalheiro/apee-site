@@ -37,13 +37,23 @@ public class GraphEmailService(IOptions<GraphConfiguration> options) : IEmailSer
             <p>{request.Message.Replace("\n", "<br/>")}</p>
             """;
 
+
+        var replyTo = new Recipient
+        {
+            EmailAddress = new EmailAddress
+            {
+                Address = request.Email,
+                Name = fullName,
+            }
+        };
+
         var message = new Message
         {
             Subject = subject,
-            Body    = new ItemBody
+            Body = new ItemBody
             {
                 ContentType = BodyType.Html,
-                Content     = body,
+                Content = body,
             },
             ToRecipients =
             [
@@ -52,18 +62,25 @@ public class GraphEmailService(IOptions<GraphConfiguration> options) : IEmailSer
                     EmailAddress = new EmailAddress { Address = _config.RecipientEmail }
                 }
             ],
-            ReplyTo =
-            [
+            CcRecipients = [replyTo],
+            ReplyTo = new List<Recipient>
+            {
                 new Recipient
                 {
                     EmailAddress = new EmailAddress
                     {
                         Address = request.Email,
-                        Name    = fullName,
+                        Name = fullName,
                     }
+
+
                 }
-            ],
+
+            }
         };
+        
+
+
 
         await graphClient.Users[_config.SharedMailbox].SendMail.PostAsync(
             new SendMailPostRequestBody { Message = message, SaveToSentItems = false },
