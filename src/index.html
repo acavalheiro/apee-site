@@ -4,17 +4,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Associação de Pais e Encarregados de Educação dos Alunos da EB1/JI do Pragal</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;600;700;800&display=swap"
-    rel="stylesheet" />
+
+  <!-- ── SEO ── -->
+  <title>ATL Pragal – Tempos Livres | EB1/JI nº1 do Pragal, Almada</title>
+  <meta name="description" content="ATL Pragal — Associação de Pais da EB1/JI nº1 do Pragal, Almada. Atividades desportivas, artísticas e apoio ao estudo para crianças nos tempos livres." />
+  <link rel="canonical" href="https://www.apee-pragal.org/" />
+  <meta name="geo.region"    content="PT-15" />
+  <meta name="geo.placename" content="Almada" />
+
+  <!-- ── Open Graph ── -->
+  <meta property="og:title"       content="ATL Pragal – Tempos Livres | EB1/JI nº1 do Pragal" />
+  <meta property="og:description" content="Atividades desportivas, artísticas e apoio ao estudo para crianças em Almada." />
+  <meta property="og:image"       content="https://www.apee-pragal.org/img/logo2.png" />
+  <meta property="og:url"         content="https://www.apee-pragal.org" />
+  <meta property="og:type"        content="website" />
+  <meta property="og:locale"      content="pt_PT" />
+
+  <!-- ── Fonts ── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- ── Styles ── -->
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/i18n.css" />
+
+  <!-- ── Icons ── -->
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- ── Structured Data ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ATL – Associação de Pais e Encarregados de Educação da EB1/JI nº1 do Pragal",
+    "url": "https://www.apee-pragal.org",
+    "logo": "https://www.apee-pragal.org/img/logo2.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Conde D. Henrique",
+      "postalCode": "2800-562",
+      "addressLocality": "Almada",
+      "addressCountry": "PT"
+    },
+    "telephone": "+351912865153",
+    "email": "geral@apee-pragal.org",
+    "openingHours": "Mo-Fr 09:00-19:00"
+  }
+  </script>
+
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
@@ -23,18 +65,18 @@
   <!-- ── NAVBAR ── -->
   <nav>
     <div class="nav-logo" id="navLogoBtn">
-      <img src="img\logo2.png" alt="Logo ATL" onerror="this.style.display='none'" />
+      <img src="img/logo2.png" alt="Logo ATL Pragal" onerror="this.style.display='none'" />
       <div>
         <strong>Associação de Pais</strong>
         <span>EB1/JI nº1 do Pragal</span>
       </div>
     </div>
     <div class="nav-links" id="navLinks">
-      <a class="active" data-page="home" data-i18n="nav.home"></a>
-      <a data-page="about" data-i18n="nav.about"></a>
-      <a data-page="team" data-i18n="nav.team"></a>
-      <a data-page="activities" data-i18n="nav.activities"></a>
-      <a data-page="contact" data-i18n="nav.contact"></a>
+      <a class="active" data-page="home"       data-i18n="nav.home">Início</a>
+      <a data-page="about"                     data-i18n="nav.about">Sobre Nós</a>
+      <a data-page="team"                      data-i18n="nav.team">Equipa</a>
+      <a data-page="activities"                data-i18n="nav.activities">Atividades</a>
+      <a data-page="contact"                   data-i18n="nav.contact">Contactos</a>
     </div>
     <!-- Language switcher — sits next to hamburger -->
     <div class="lang-switcher">
@@ -52,43 +94,41 @@
     <section class="hero">
       <div class="hero-inner">
         <div class="hero-text">
-          <span class="pill" data-i18n="home.hero.pill"></span>
+          <span class="pill" data-i18n="home.hero.pill">🦒 Bem-vindos à ATL</span>
           <h1>
-            <!-- Two-part heading: plain text + coloured span -->
-            <span data-i18n="home.hero.title"></span>
+            <span data-i18n="home.hero.title">Um lugar onde as crianças</span>
             <span class="hero-title-break"> </span>
-            <span style="color:var(--orange)" data-i18n="home.hero.title.span"></span>
+            <span style="color:var(--orange)" data-i18n="home.hero.title.span">crescem, brincam e aprendem</span>
           </h1>
 
-          <p data-i18n="home.hero.description"></p>
+          <p data-i18n="home.hero.description">A Associação de Pais e Encarregados de Educação da EB1/JI nº1 do Pragal cuida dos seus filhos com carinho, criatividade e dedicação nos tempos livres.</p>
           <div class="hero-btns">
-            <button class="btn btn-primary" data-goto="activities" data-i18n="home.hero.btn.activities"></button>
-            <button class="btn btn-secondary" data-goto="contact" data-i18n="home.hero.btn.contact"></button>
+            <button class="btn btn-primary"   data-goto="activities" data-i18n="home.hero.btn.activities">Ver Atividades 🎨</button>
+            <button class="btn btn-secondary" data-goto="contact"    data-i18n="home.hero.btn.contact">Fale Connosco</button>
           </div>
           <div class="hero-stats">
-            <div class="stat"><strong>+120</strong><span data-i18n="home.hero.stat.children"></span></div>
-            <div class="stat"><strong>+15</strong> <span data-i18n="home.hero.stat.activities"></span></div>
-            <div class="stat"><strong>10+</strong> <span data-i18n="home.hero.stat.years"></span></div>
+            <div class="stat"><strong>+120</strong><span data-i18n="home.hero.stat.children">Crianças</span></div>
+            <div class="stat"><strong>+15</strong> <span data-i18n="home.hero.stat.activities">Atividades</span></div>
+            <div class="stat"><strong>10+</strong> <span data-i18n="home.hero.stat.years">Anos</span></div>
           </div>
         </div>
         <div class="hero-image">
-          <img src="img\logo2.png" alt="Mascote ATL – Girafa" />
+          <img src="img/logo2.png" alt="Mascote ATL Pragal – Girafa" />
         </div>
       </div>
     </section>
 
     <section>
       <div class="section-header">
-        <span class="pill" data-i18n="home.features.pill"></span>
-        <h2 data-i18n="home.features.title"></h2>
-        <p data-i18n="home.features.description"></p>
+        <span class="pill" data-i18n="home.features.pill">O que fazemos</span>
+        <h2 data-i18n="home.features.title">Porquê escolher a ATL Pragal?</h2>
+        <p data-i18n="home.features.description">Proporcionamos um ambiente seguro, alegre e estimulante para cada criança.</p>
       </div>
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">🏡</div>
           <h3 data-i18n="home.features.safe.title">Ambiente Seguro</h3>
-          <p data-i18n="home.features.safe.desc">Espaços supervisionados por educadores qualificados, pensados para o bem-estar e segurança de cada criança.
-          </p>
+          <p data-i18n="home.features.safe.desc">Espaços supervisionados por educadores qualificados, pensados para o bem-estar e segurança de cada criança.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🎭</div>
@@ -113,34 +153,33 @@
         <div class="act-card">
           <div class="act-thumb" style="background:linear-gradient(135deg,#e8f4fd,#c8e6fa)">⚽</div>
           <div class="act-body">
-            <h3 data-i18n="home.activities.sport.title">Desporto & Movimento</h3>
+            <h3 data-i18n="home.activities.sport.title">Desporto &amp; Movimento</h3>
             <p data-i18n="home.activities.sport.desc">Futebol, jogos tradicionais e atividade física para um desenvolvimento saudável.</p>
-            <span
-              class="act-tag" data-i18n="home.activities.sport.tag">Diário</span>
+            <span class="act-tag" data-i18n="home.activities.sport.tag">Diário</span>
           </div>
         </div>
         <div class="act-card">
           <div class="act-thumb" style="background:linear-gradient(135deg,#fff8e8,#ffeab0)">🎨</div>
           <div class="act-body">
-            <h3 data-i18n="home.activities.arts.title">Artes & Criatividade</h3>
-            <p data-i18n="home.activities.arts.desc">Pintura, desenho, colagens e projetos artísticos que estimulam a imaginação.</p><span class="act-tag"
-              style="background:var(--orange)" data-i18n="home.activities.arts.tag">Semanal</span>
+            <h3 data-i18n="home.activities.arts.title">Artes &amp; Criatividade</h3>
+            <p data-i18n="home.activities.arts.desc">Pintura, desenho, colagens e projetos artísticos que estimulam a imaginação.</p>
+            <span class="act-tag" style="background:var(--orange)" data-i18n="home.activities.arts.tag">Semanal</span>
           </div>
         </div>
         <div class="act-card">
           <div class="act-thumb" style="background:linear-gradient(135deg,#ffeef0,#ffd0d4)">📚</div>
           <div class="act-body">
             <h3 data-i18n="home.activities.study.title">Apoio ao Estudo</h3>
-            <p data-i18n="home.activities.study.desc">Acompanhamento nos trabalhos de casa num ambiente tranquilo e organizado.</p><span class="act-tag"
-              style="background:var(--red)" data-i18n="home.activities.study.tag">Diário</span>
+            <p data-i18n="home.activities.study.desc">Acompanhamento nos trabalhos de casa num ambiente tranquilo e organizado.</p>
+            <span class="act-tag" style="background:var(--red)" data-i18n="home.activities.study.tag">Diário</span>
           </div>
         </div>
         <div class="act-card">
           <div class="act-thumb" style="background:linear-gradient(135deg,#efffee,#c8f5c8)">🎵</div>
           <div class="act-body">
-            <h3 data-i18n="home.activities.music.title">Música & Teatro</h3>
-            <p data-i18n="home.activities.music.desc">Expressão dramática e musical para desenvolver criatividade e confiança.</p><span class="act-tag"
-              style="background:#2ecc71" data-i18n="home.activities.music.tag">Semanal</span>
+            <h3 data-i18n="home.activities.music.title">Música &amp; Teatro</h3>
+            <p data-i18n="home.activities.music.desc">Expressão dramática e musical para desenvolver criatividade e confiança.</p>
+            <span class="act-tag" style="background:#2ecc71" data-i18n="home.activities.music.tag">Semanal</span>
           </div>
         </div>
       </div>
@@ -163,28 +202,23 @@
     <div class="page-hero">
       <span class="pill">A Nossa História</span>
       <h1>Sobre a ATL Pragal</h1>
-      <p>Uma associação criada por pais, para pais — com o único objetivo de cuidar e inspirar as crianças da nossa
-        comunidade.</p>
+      <p>Uma associação criada por pais, para pais — com o único objetivo de cuidar e inspirar as crianças da nossa comunidade.</p>
     </div>
 
     <div class="about-content">
       <div class="about-block">
         <div class="about-text">
           <h2>Quem Somos</h2>
-          <p>A Associação de Pais e Encarregados de Educação da EB1/JI nº1 do Pragal é uma organização sem fins
-            lucrativos fundada com o objetivo de apoiar e enriquecer os tempos livres das crianças da escola.</p>
-          <p>Trabalhamos em conjunto com a escola e com as famílias para criar um ambiente acolhedor, estimulante e
-            seguro onde cada criança pode desenvolver as suas capacidades ao máximo.</p>
+          <p>A Associação de Pais e Encarregados de Educação da EB1/JI nº1 do Pragal é uma organização sem fins lucrativos fundada com o objetivo de apoiar e enriquecer os tempos livres das crianças da escola.</p>
+          <p>Trabalhamos em conjunto com a escola e com as famílias para criar um ambiente acolhedor, estimulante e seguro onde cada criança pode desenvolver as suas capacidades ao máximo.</p>
         </div>
         <div class="about-visual av-blue">🦒</div>
       </div>
       <div class="about-block rev">
         <div class="about-text">
           <h2>A Nossa Missão</h2>
-          <p>Promover o desenvolvimento integral das crianças através de atividades lúdicas, educativas e desportivas de
-            qualidade nos seus tempos livres.</p>
-          <p>Acreditamos que cada momento fora da sala de aula é uma oportunidade de aprender, crescer e criar memórias
-            felizes.</p>
+          <p>Promover o desenvolvimento integral das crianças através de atividades lúdicas, educativas e desportivas de qualidade nos seus tempos livres.</p>
+          <p>Acreditamos que cada momento fora da sala de aula é uma oportunidade de aprender, crescer e criar memórias felizes.</p>
         </div>
         <div class="about-visual av-orange">🌟</div>
       </div>
@@ -252,10 +286,7 @@
 
   </div>
 
-  <!-- ══════════════════════════════════════════
-     EQUIPA — paste this block into index.html
-     after the page-activities div
-══════════════════════════════════════════ -->
+  <!-- ══════════════ EQUIPA ══════════════ -->
   <div class="page" id="page-team">
 
     <!-- Hero -->
@@ -315,8 +346,7 @@
           <div class="staff-card__body">
             <h3>Maria João Silva</h3>
             <p class="staff-card__role">Presidente da Direção</p>
-            <p class="staff-card__bio">Mãe de dois alunos e fundadora da associação. Apaixonada por educação e pelo
-              bem-estar das crianças da nossa comunidade.</p>
+            <p class="staff-card__bio">Mãe de dois alunos e fundadora da associação. Apaixonada por educação e pelo bem-estar das crianças da nossa comunidade.</p>
             <div class="staff-card__tags">
               <span class="staff-tag">Gestão</span>
               <span class="staff-tag">Educação</span>
@@ -327,8 +357,7 @@
 
         <div class="staff-card staff-card--featured">
           <div class="staff-card__photo-wrap">
-            <div class="staff-card__photo staff-card__photo--placeholder"
-              style="background:linear-gradient(135deg,#fff3e0,#ffe0b2)">
+            <div class="staff-card__photo staff-card__photo--placeholder" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2)">
               <span>👨‍💼</span>
             </div>
             <div class="staff-card__badge staff-card__badge--orange">Vice-Presidente</div>
@@ -336,8 +365,7 @@
           <div class="staff-card__body">
             <h3>António Ferreira</h3>
             <p class="staff-card__role">Vice-Presidente</p>
-            <p class="staff-card__bio">Encarregado de educação e voluntário há 5 anos. Responsável pela coordenação dos
-              eventos e atividades especiais.</p>
+            <p class="staff-card__bio">Encarregado de educação e voluntário há 5 anos. Responsável pela coordenação dos eventos e atividades especiais.</p>
             <div class="staff-card__tags">
               <span class="staff-tag">Coordenação</span>
               <span class="staff-tag">Eventos</span>
@@ -359,16 +387,14 @@
 
         <div class="staff-card">
           <div class="staff-card__photo-wrap">
-            <div class="staff-card__photo staff-card__photo--placeholder"
-              style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9)">
+            <div class="staff-card__photo staff-card__photo--placeholder" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9)">
               <span>👩‍🏫</span>
             </div>
           </div>
           <div class="staff-card__body">
             <h3>Carla Mendes</h3>
             <p class="staff-card__role">Coordenadora Pedagógica</p>
-            <p class="staff-card__bio">Licenciada em Educação Básica com 12 anos de experiência. Especialista em
-              desenvolvimento infantil e atividades lúdicas.</p>
+            <p class="staff-card__bio">Licenciada em Educação Básica com 12 anos de experiência. Especialista em desenvolvimento infantil e atividades lúdicas.</p>
             <div class="staff-card__tags">
               <span class="staff-tag staff-tag--green">Pedagogia</span>
               <span class="staff-tag staff-tag--green">Coordenação</span>
@@ -378,16 +404,14 @@
 
         <div class="staff-card">
           <div class="staff-card__photo-wrap">
-            <div class="staff-card__photo staff-card__photo--placeholder"
-              style="background:linear-gradient(135deg,#fce4ec,#f8bbd0)">
+            <div class="staff-card__photo staff-card__photo--placeholder" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0)">
               <span>👩‍🎨</span>
             </div>
           </div>
           <div class="staff-card__body">
             <h3>Sofia Rodrigues</h3>
             <p class="staff-card__role">Animadora Sociocultural</p>
-            <p class="staff-card__bio">Especialista em artes plásticas e expressão dramática. Traz criatividade e
-              alegria a cada sessão de atividades.</p>
+            <p class="staff-card__bio">Especialista em artes plásticas e expressão dramática. Traz criatividade e alegria a cada sessão de atividades.</p>
             <div class="staff-card__tags">
               <span class="staff-tag staff-tag--pink">Artes</span>
               <span class="staff-tag staff-tag--pink">Teatro</span>
@@ -397,16 +421,14 @@
 
         <div class="staff-card">
           <div class="staff-card__photo-wrap">
-            <div class="staff-card__photo staff-card__photo--placeholder"
-              style="background:linear-gradient(135deg,#e3f2fd,#bbdefb)">
+            <div class="staff-card__photo staff-card__photo--placeholder" style="background:linear-gradient(135deg,#e3f2fd,#bbdefb)">
               <span>👨‍🏫</span>
             </div>
           </div>
           <div class="staff-card__body">
             <h3>Rui Baptista</h3>
             <p class="staff-card__role">Monitor Desportivo</p>
-            <p class="staff-card__bio">Licenciado em Desporto e Educação Física. Promove hábitos saudáveis e o espírito
-              de equipa através do desporto.</p>
+            <p class="staff-card__bio">Licenciado em Desporto e Educação Física. Promove hábitos saudáveis e o espírito de equipa através do desporto.</p>
             <div class="staff-card__tags">
               <span class="staff-tag">Desporto</span>
               <span class="staff-tag">Saúde</span>
@@ -416,16 +438,14 @@
 
         <div class="staff-card">
           <div class="staff-card__photo-wrap">
-            <div class="staff-card__photo staff-card__photo--placeholder"
-              style="background:linear-gradient(135deg,#f3e5f5,#e1bee7)">
+            <div class="staff-card__photo staff-card__photo--placeholder" style="background:linear-gradient(135deg,#f3e5f5,#e1bee7)">
               <span>👩‍🎵</span>
             </div>
           </div>
           <div class="staff-card__body">
             <h3>Ana Lopes</h3>
             <p class="staff-card__role">Educadora Musical</p>
-            <p class="staff-card__bio">Formada em Educação Musical pelo Conservatório. Desenvolve a sensibilidade
-              artística e o ritmo nas crianças.</p>
+            <p class="staff-card__bio">Formada em Educação Musical pelo Conservatório. Desenvolve a sensibilidade artística e o ritmo nas crianças.</p>
             <div class="staff-card__tags">
               <span class="staff-tag staff-tag--purple">Música</span>
               <span class="staff-tag staff-tag--purple">Ritmo</span>
@@ -435,16 +455,14 @@
 
         <div class="staff-card">
           <div class="staff-card__photo-wrap">
-            <div class="staff-card__photo staff-card__photo--placeholder"
-              style="background:linear-gradient(135deg,#e8f5e9,#dcedc8)">
+            <div class="staff-card__photo staff-card__photo--placeholder" style="background:linear-gradient(135deg,#e8f5e9,#dcedc8)">
               <span>👨‍🌿</span>
             </div>
           </div>
           <div class="staff-card__body">
             <h3>Pedro Alves</h3>
             <p class="staff-card__role">Monitor de Natureza</p>
-            <p class="staff-card__bio">Biólogo de formação e educador ambiental. Desperta nas crianças o amor pela
-              natureza e a consciência ecológica.</p>
+            <p class="staff-card__bio">Biólogo de formação e educador ambiental. Desperta nas crianças o amor pela natureza e a consciência ecológica.</p>
             <div class="staff-card__tags">
               <span class="staff-tag staff-tag--green">Natureza</span>
               <span class="staff-tag staff-tag--green">Ambiente</span>
@@ -454,16 +472,14 @@
 
         <div class="staff-card">
           <div class="staff-card__photo-wrap">
-            <div class="staff-card__photo staff-card__photo--placeholder"
-              style="background:linear-gradient(135deg,#fff8e1,#ffecb3)">
+            <div class="staff-card__photo staff-card__photo--placeholder" style="background:linear-gradient(135deg,#fff8e1,#ffecb3)">
               <span>👩‍💻</span>
             </div>
           </div>
           <div class="staff-card__body">
             <h3>Inês Costa</h3>
             <p class="staff-card__role">Apoio Educativo</p>
-            <p class="staff-card__bio">Especialista em necessidades educativas especiais. Garante que todas as crianças
-              recebem o apoio de que necessitam.</p>
+            <p class="staff-card__bio">Especialista em necessidades educativas especiais. Garante que todas as crianças recebem o apoio de que necessitam.</p>
             <div class="staff-card__tags">
               <span class="staff-tag staff-tag--yellow">Inclusão</span>
               <span class="staff-tag staff-tag--yellow">Apoio</span>
@@ -480,8 +496,7 @@
         <div class="join-us-text">
           <span class="pill">Junta-te a nós</span>
           <h2>Quer fazer parte da nossa equipa?</h2>
-          <p>Estamos sempre à procura de pessoas apaixonadas por crianças e educação. Se tens o perfil certo,
-            gostaríamos muito de te conhecer!</p>
+          <p>Estamos sempre à procura de pessoas apaixonadas por crianças e educação. Se tens o perfil certo, gostaríamos muito de te conhecer!</p>
           <button class="btn btn-primary" data-goto="contact">Envia a tua candidatura 🚀</button>
         </div>
         <div class="join-us-visual">
@@ -505,7 +520,7 @@
   <div class="page" id="page-activities">
 
     <div class="page-hero">
-      <span class="pill">Programas & Horários</span>
+      <span class="pill">Programas &amp; Horários</span>
       <h1>As Nossas Atividades</h1>
       <p>Um programa completo pensado para o desenvolvimento, alegria e bem-estar de cada criança.</p>
     </div>
@@ -520,7 +535,7 @@
           <div class="sched-head" style="background:linear-gradient(135deg,var(--blue),#0f5a96)">
             <div class="icon">📚</div>
             <div>
-              <h3>Segunda & Quarta</h3>
+              <h3>Segunda &amp; Quarta</h3>
               <p>Apoio Escolar + Leitura</p>
             </div>
           </div>
@@ -536,21 +551,16 @@
           <div class="sched-head" style="background:linear-gradient(135deg,var(--orange),#c96118)">
             <div class="icon">🎨</div>
             <div>
-              <h3>Terça & Quinta</h3>
+              <h3>Terça &amp; Quinta</h3>
               <p>Expressão Artística</p>
             </div>
           </div>
           <div class="sched-body">
-            <div class="sched-row"><span class="sched-time"
-                style="background:var(--orange)">13:00</span><span>Acolhimento e almoço</span></div>
-            <div class="sched-row"><span class="sched-time" style="background:var(--orange)">14:00</span><span>Apoio aos
-                trabalhos de casa</span></div>
-            <div class="sched-row"><span class="sched-time" style="background:var(--orange)">15:30</span><span>Artes
-                plásticas / Música</span></div>
-            <div class="sched-row"><span class="sched-time"
-                style="background:var(--orange)">16:00</span><span>Lanche</span></div>
-            <div class="sched-row"><span class="sched-time" style="background:var(--orange)">16:30</span><span>Teatro /
-                Expressão dramática</span></div>
+            <div class="sched-row"><span class="sched-time" style="background:var(--orange)">13:00</span><span>Acolhimento e almoço</span></div>
+            <div class="sched-row"><span class="sched-time" style="background:var(--orange)">14:00</span><span>Apoio aos trabalhos de casa</span></div>
+            <div class="sched-row"><span class="sched-time" style="background:var(--orange)">15:30</span><span>Artes plásticas / Música</span></div>
+            <div class="sched-row"><span class="sched-time" style="background:var(--orange)">16:00</span><span>Lanche</span></div>
+            <div class="sched-row"><span class="sched-time" style="background:var(--orange)">16:30</span><span>Teatro / Expressão dramática</span></div>
           </div>
         </div>
         <div class="sched-card">
@@ -558,20 +568,15 @@
             <div class="icon">⚽</div>
             <div>
               <h3>Sexta-Feira</h3>
-              <p>Desporto & Aventura</p>
+              <p>Desporto &amp; Aventura</p>
             </div>
           </div>
           <div class="sched-body">
-            <div class="sched-row"><span class="sched-time" style="background:#27ae60">13:00</span><span>Acolhimento e
-                almoço</span></div>
-            <div class="sched-row"><span class="sched-time" style="background:#27ae60">14:00</span><span>Apoio aos
-                trabalhos de casa</span></div>
-            <div class="sched-row"><span class="sched-time" style="background:#27ae60">15:30</span><span>Atividade
-                desportiva ao ar livre</span></div>
-            <div class="sched-row"><span class="sched-time" style="background:#27ae60">16:00</span><span>Lanche</span>
-            </div>
-            <div class="sched-row"><span class="sched-time" style="background:#27ae60">16:30</span><span>Jogos em equipa
-                / Convívio</span></div>
+            <div class="sched-row"><span class="sched-time" style="background:#27ae60">13:00</span><span>Acolhimento e almoço</span></div>
+            <div class="sched-row"><span class="sched-time" style="background:#27ae60">14:00</span><span>Apoio aos trabalhos de casa</span></div>
+            <div class="sched-row"><span class="sched-time" style="background:#27ae60">15:30</span><span>Atividade desportiva ao ar livre</span></div>
+            <div class="sched-row"><span class="sched-time" style="background:#27ae60">16:00</span><span>Lanche</span></div>
+            <div class="sched-row"><span class="sched-time" style="background:#27ae60">16:30</span><span>Jogos em equipa / Convívio</span></div>
           </div>
         </div>
       </div>
@@ -586,7 +591,7 @@
         <div class="act-card">
           <div class="act-thumb" style="background:linear-gradient(135deg,#e8f4fd,#c8e6fa)">⚽</div>
           <div class="act-body">
-            <h3>Desporto & Movimento</h3>
+            <h3>Desporto &amp; Movimento</h3>
             <p>Futebol, basquetebol e jogos tradicionais portugueses.</p><span class="act-tag">Física</span>
           </div>
         </div>
@@ -594,40 +599,35 @@
           <div class="act-thumb" style="background:linear-gradient(135deg,#fff8e8,#ffeab0)">🎨</div>
           <div class="act-body">
             <h3>Artes Plásticas</h3>
-            <p>Pintura, escultura, colagens e técnicas diversas de expressão visual.</p><span class="act-tag"
-              style="background:var(--orange)">Criativa</span>
+            <p>Pintura, escultura, colagens e técnicas diversas de expressão visual.</p><span class="act-tag" style="background:var(--orange)">Criativa</span>
           </div>
         </div>
         <div class="act-card">
           <div class="act-thumb" style="background:linear-gradient(135deg,#f0e8ff,#d8c4ff)">🎵</div>
           <div class="act-body">
             <h3>Música</h3>
-            <p>Iniciação musical, ritmo, canto coral e exploração de instrumentos.</p><span class="act-tag"
-              style="background:#8e44ad">Artística</span>
+            <p>Iniciação musical, ritmo, canto coral e exploração de instrumentos.</p><span class="act-tag" style="background:#8e44ad">Artística</span>
           </div>
         </div>
         <div class="act-card">
           <div class="act-thumb" style="background:linear-gradient(135deg,#efffee,#c8f5c8)">🌿</div>
           <div class="act-body">
-            <h3>Natureza & Ambiente</h3>
-            <p>Jardinagem, reciclagem criativa e descoberta do mundo natural.</p><span class="act-tag"
-              style="background:#2ecc71">Ambiental</span>
+            <h3>Natureza &amp; Ambiente</h3>
+            <p>Jardinagem, reciclagem criativa e descoberta do mundo natural.</p><span class="act-tag" style="background:#2ecc71">Ambiental</span>
           </div>
         </div>
         <div class="act-card">
           <div class="act-thumb" style="background:linear-gradient(135deg,#ffeef0,#ffd0d4)">📚</div>
           <div class="act-body">
-            <h3>Leitura & Escrita</h3>
-            <p>Clube do livro, hora do conto e criação de histórias originais.</p><span class="act-tag"
-              style="background:var(--red)">Educativa</span>
+            <h3>Leitura &amp; Escrita</h3>
+            <p>Clube do livro, hora do conto e criação de histórias originais.</p><span class="act-tag" style="background:var(--red)">Educativa</span>
           </div>
         </div>
         <div class="act-card">
           <div class="act-thumb" style="background:linear-gradient(135deg,#fff0e0,#ffd5a0)">🎭</div>
           <div class="act-body">
-            <h3>Teatro & Expressão</h3>
-            <p>Jogos dramáticos, fantoches e apresentações para a comunidade.</p><span class="act-tag"
-              style="background:#e67e22">Expressiva</span>
+            <h3>Teatro &amp; Expressão</h3>
+            <p>Jogos dramáticos, fantoches e apresentações para a comunidade.</p><span class="act-tag" style="background:#e67e22">Expressiva</span>
           </div>
         </div>
       </div>
@@ -656,114 +656,118 @@
         <div class="info-row">
           <div class="info-icon">📍</div>
           <div class="info-text">
-            <strong data-i18n="contact.info.address"></strong>
-            <span data-i18n-html="contact.info.address.val"></span>
+            <strong data-i18n="contact.info.address">Morada</strong>
+            <span data-i18n-html="contact.info.address.val">Rua Conde D. Henrique<br>2800-562 Almada, Portugal</span>
           </div>
         </div>
         <div class="info-row">
           <div class="info-icon">📞</div>
-          <div class="info-text"><strong data-i18n="contact.info.phone"></strong><span>912865153</span></div>
+          <div class="info-text">
+            <strong data-i18n="contact.info.phone">Telefone</strong>
+            <span>912 865 153</span>
+          </div>
         </div>
         <div class="info-row">
           <div class="info-icon">✉️</div>
-          <div class="info-text"><strong data-i18n="contact.info.email"></strong><span>geral@apee-pragal.org</span></div>
+          <div class="info-text">
+            <strong data-i18n="contact.info.email">Email</strong>
+            <span>geral@apee-pragal.org</span>
+          </div>
         </div>
         <div class="info-row">
           <div class="info-icon">🕐</div>
           <div class="info-text">
-            <strong data-i18n="contact.info.hours"></strong>
-            <span data-i18n-html="contact.info.hours.val"></span>
+            <strong data-i18n="contact.info.hours">Horário</strong>
+            <span data-i18n-html="contact.info.hours.val">Segunda a Sexta<br>09:00 – 19:00</span>
           </div>
         </div>
       </div>
 
       <div class="contact-form" id="contactFormContainer">
-  <div id="form-fields">
-    <h2 data-i18n="contact.form.title"></h2>
-    <div class="form-row">
-      <div class="form-group">
-        <label data-i18n="contact.form.name"></label>
-        <input type="text" id="f-name" data-i18n-placeholder="contact.form.name.ph"/>
-      </div>
-      <div class="form-group">
-        <label data-i18n="contact.form.surname"></label>
-        <input type="text" id="f-surname" data-i18n-placeholder="contact.form.surname.ph"/>
-      </div>
-    </div>
-    <div class="form-group">
-      <label data-i18n="contact.form.email"></label>
-      <input type="email" id="f-email" data-i18n-placeholder="contact.form.email.ph"/>
-    </div>
-    <div class="form-group">
-      <label data-i18n="contact.form.subject"></label>
-      <select id="f-subject">
-        <option value="" data-i18n="contact.form.subject.ph"></option>
-        <option data-i18n="contact.form.subject.1"></option>
-        <option data-i18n="contact.form.subject.2"></option>
-        <option data-i18n="contact.form.subject.3"></option>
-        <option data-i18n="contact.form.subject.4"></option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label data-i18n="contact.form.message"></label>
-      <textarea id="f-msg" data-i18n-placeholder="contact.form.message.ph"></textarea>
-    </div>
-    <div class="form-group">
-      <label data-i18n="contact.form.captcha"></label>
-      <div id="turnstile-container"></div>
-      <span id="turnstile-error" class="field-error" style="display:none"
-            data-i18n="contact.form.captcha.err"></span>
-    </div>
-    <button class="btn btn-primary btn-full" id="submitBtn"
-            data-i18n="contact.form.submit"></button>
-  </div>
-  <div id="form-success">
-    <div class="s-icon">🎉</div>
-    <h3 data-i18n="contact.form.success.title"></h3>
-    <p  data-i18n="contact.form.success.desc"></p>
-    <br/>
-    <button class="btn btn-outline" id="resetBtn"
-            data-i18n="contact.form.success.btn"></button>
-  </div>
-</div>
+        <div id="form-fields">
+          <h2 data-i18n="contact.form.title">Envie-nos uma mensagem</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="contact.form.name">Nome *</label>
+              <input type="text" id="f-name" data-i18n-placeholder="contact.form.name.ph" />
+            </div>
+            <div class="form-group">
+              <label data-i18n="contact.form.surname">Apelido</label>
+              <input type="text" id="f-surname" data-i18n-placeholder="contact.form.surname.ph" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label data-i18n="contact.form.email">Email *</label>
+            <input type="email" id="f-email" data-i18n-placeholder="contact.form.email.ph" />
+          </div>
+          <div class="form-group">
+            <label data-i18n="contact.form.subject">Assunto</label>
+            <select id="f-subject">
+              <option value="" data-i18n="contact.form.subject.ph">Selecione um assunto</option>
+              <option data-i18n="contact.form.subject.1">Informações sobre inscrições</option>
+              <option data-i18n="contact.form.subject.2">Horários e atividades</option>
+              <option data-i18n="contact.form.subject.3">Parceria / Voluntariado</option>
+              <option data-i18n="contact.form.subject.4">Outro assunto</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label data-i18n="contact.form.message">Mensagem *</label>
+            <textarea id="f-msg" data-i18n-placeholder="contact.form.message.ph"></textarea>
+          </div>
+          <div class="form-group">
+            <label data-i18n="contact.form.captcha">Verificação de segurança *</label>
+            <div id="turnstile-container"></div>
+            <span id="turnstile-error" class="field-error" style="display:none"
+                  data-i18n="contact.form.captcha.err">⚠️ Por favor confirme que não é um robô.</span>
+          </div>
+          <button class="btn btn-primary btn-full" id="submitBtn"
+                  data-i18n="contact.form.submit">Enviar Mensagem 🚀</button>
+        </div>
+        <div id="form-success">
+          <div class="s-icon">🎉</div>
+          <h3 data-i18n="contact.form.success.title">Mensagem enviada!</h3>
+          <p  data-i18n="contact.form.success.desc">Obrigado pelo contacto. Responderemos brevemente.</p>
+          <br />
+          <button class="btn btn-outline" id="resetBtn"
+                  data-i18n="contact.form.success.btn">Enviar outra mensagem</button>
+        </div>
       </div>
     </div>
 
   </div>
 
   <!-- ── FOOTER ── -->
-  <!-- ⑦ FOOTER -->
   <footer>
     <div class="footer-inner">
       <div>
         <div class="footer-brand-top">
-          <img src="logo2.png" alt="Logo" onerror="this.style.display='none'" />
+          <img src="img/logo2.png" alt="Logo ATL Pragal" onerror="this.style.display='none'" />
           <strong>ATL Pragal</strong>
         </div>
-        <p data-i18n="footer.description"></p>
+        <p data-i18n="footer.description">Associação de Pais e Encarregados de Educação da EB1/JI nº1 do Pragal. Cuidamos dos tempos livres das crianças com carinho e dedicação.</p>
       </div>
       <div class="footer-col">
-        <h4 data-i18n="footer.nav.title"></h4>
+        <h4 data-i18n="footer.nav.title">Navegação</h4>
         <ul>
-          <li><a data-goto="home" data-i18n="nav.home"></a></li>
-          <li><a data-goto="about" data-i18n="nav.about"></a></li>
-          <li><a data-goto="activities" data-i18n="nav.activities"></a></li>
-          <li><a data-goto="team" data-i18n="nav.team"></a></li>
-          <li><a data-goto="contact" data-i18n="nav.contact"></a></li>
+          <li><a data-goto="home"       data-i18n="nav.home">Início</a></li>
+          <li><a data-goto="about"      data-i18n="nav.about">Sobre Nós</a></li>
+          <li><a data-goto="activities" data-i18n="nav.activities">Atividades</a></li>
+          <li><a data-goto="team"       data-i18n="nav.team">Equipa</a></li>
+          <li><a data-goto="contact"    data-i18n="nav.contact">Contactos</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4 data-i18n="footer.contact.title"></h4>
+        <h4 data-i18n="footer.contact.title">Contacto</h4>
         <ul>
           <li><a>EB1/JI nº1 do Pragal</a></li>
           <li><a>Rua Conde D. Henrique<br>2800-562 Almada, Portugal</a></li>
-          <li><a>geral@apee-pragal.org</li>
-          <li><a data-i18n="footer.hours"></a></li>
+          <li><a>geral@apee-pragal.org</a></li>
+          <li><a data-i18n="footer.hours">Seg–Sex: 13h–19h</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p data-i18n="footer.copyright"></p>
+      <p data-i18n="footer.copyright">© 2026 ATL – Associação de Pais e Encarregados de Educação da EB1/JI Nº1 do Pragal. Todos os direitos reservados.</p>
     </div>
   </footer>
 
