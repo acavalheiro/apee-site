@@ -1,6 +1,10 @@
 ﻿namespace Apee.Shared.Models;
 
-public record TurnstileConfiguration(string SecretKey, string Url);
+public record TurnstileConfiguration
+{
+    public required string SecretKey { get; init; }
+    public required string Url { get; init; }
+};
 
 public record CaptchaValidationRequest
 {

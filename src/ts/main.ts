@@ -6,11 +6,11 @@ import { initI18n, t, setLocale, type Locale } from './i18n/i18n';
 type PageId = 'home' | 'about' | 'activities' | 'team' | 'contact';
 
 interface ContactFormData {
-  nome:           string;
-  apelido:        string;
+  firstName:      string;
+  lastName:       string;
   email:          string;
-  assunto:        string;
-  mensagem:       string;
+  subject:        string;
+  message:        string;
   turnstileToken: string;
 }
 
@@ -50,7 +50,7 @@ const PAGE_ORDER: Record<PageId, number> = {
   contact:    4,
 };
 
-const TURNSTILE_SITE_KEY = '0x4AAAAAAAAAAAAAAAAAAAAAAAAA'; // ← substitui pela tua chave
+const TURNSTILE_SITE_KEY = '1x00000000000000000000AA';
 
 // ── Turnstile ────────────────────────────────────────────────────────────────
 
@@ -118,13 +118,13 @@ function toggleMobileMenu(): void {
 // ── Contact Form ─────────────────────────────────────────────────────────────
 
 function getFormData(): ContactFormData | null {
-  const nome     = (document.getElementById('f-name')    as HTMLInputElement)?.value.trim();
-  const apelido  = (document.getElementById('f-surname') as HTMLInputElement)?.value.trim();
-  const email    = (document.getElementById('f-email')   as HTMLInputElement)?.value.trim();
-  const assunto  = (document.getElementById('f-subject') as HTMLSelectElement)?.value;
-  const mensagem = (document.getElementById('f-msg')     as HTMLTextAreaElement)?.value.trim();
+  const firstName = (document.getElementById('f-name')    as HTMLInputElement)?.value.trim();
+  const lastName  = (document.getElementById('f-surname') as HTMLInputElement)?.value.trim();
+  const email     = (document.getElementById('f-email')   as HTMLInputElement)?.value.trim();
+  const subject   = (document.getElementById('f-subject') as HTMLSelectElement)?.value;
+  const message   = (document.getElementById('f-msg')     as HTMLTextAreaElement)?.value.trim();
 
-  if (!nome || !email || !mensagem) {
+  if (!firstName || !email || !message) {
     alert(t('contact.form.validation.required'));
     return null;
   }
@@ -136,7 +136,7 @@ function getFormData(): ContactFormData | null {
     return null;
   }
 
-  return { nome, apelido, email, assunto, mensagem, turnstileToken };
+  return { firstName, lastName, email, subject, message, turnstileToken };
 }
 
 function showFormSuccess(): void {
@@ -167,7 +167,7 @@ async function submitForm(): Promise<void> {
   if (btn) { btn.disabled = true; btn.textContent = t('contact.form.sending'); }
 
   try {
-    const response = await fetch('/api/contact', {
+    const response = await fetch('http://localhost:7205/api/contact', {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
       body:    JSON.stringify(data),

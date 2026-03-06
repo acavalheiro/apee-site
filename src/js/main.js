@@ -411,7 +411,7 @@
     team: 3,
     contact: 4
   };
-  var TURNSTILE_SITE_KEY = "0x4AAAAAAAAAAAAAAAAAAAAAAAAA";
+  var TURNSTILE_SITE_KEY = "1x00000000000000000000AA";
   var turnstileWidgetId = null;
   var turnstileToken = null;
   var turnstileReady = false;
@@ -466,12 +466,12 @@
     document.getElementById("navLinks")?.classList.toggle("open");
   }
   function getFormData() {
-    const nome = document.getElementById("f-name")?.value.trim();
-    const apelido = document.getElementById("f-surname")?.value.trim();
+    const firstName = document.getElementById("f-name")?.value.trim();
+    const lastName = document.getElementById("f-surname")?.value.trim();
     const email = document.getElementById("f-email")?.value.trim();
-    const assunto = document.getElementById("f-subject")?.value;
-    const mensagem = document.getElementById("f-msg")?.value.trim();
-    if (!nome || !email || !mensagem) {
+    const subject = document.getElementById("f-subject")?.value;
+    const message = document.getElementById("f-msg")?.value.trim();
+    if (!firstName || !email || !message) {
       alert(t("contact.form.validation.required"));
       return null;
     }
@@ -480,7 +480,7 @@
       document.getElementById("turnstile-container")?.scrollIntoView({ behavior: "smooth", block: "center" });
       return null;
     }
-    return { nome, apelido, email, assunto, mensagem, turnstileToken };
+    return { firstName, lastName, email, subject, message, turnstileToken };
   }
   function showFormSuccess() {
     const fields = document.getElementById("form-fields");
@@ -509,7 +509,7 @@
       btn.textContent = t("contact.form.sending");
     }
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("http://localhost:7205/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)

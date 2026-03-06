@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http.Json;
-using System.Text;
+﻿using System.Net.Http.Json;
 using Apee.Shared.Interfaces;
 using Apee.Shared.Models;
 using Microsoft.Extensions.Logging;
@@ -9,7 +6,7 @@ using Microsoft.Extensions.Options;
 
 namespace Apee.Shared.Captcha;
 
-    public class TurnstileService(
+public class TurnstileService(
         ILogger<TurnstileService> logger,
         IHttpClientFactory httpClientFactory,
         IOptions<TurnstileConfiguration> configuration)
@@ -41,7 +38,7 @@ namespace Apee.Shared.Captcha;
                 
                 var validationResponse = await response.Content.ReadFromJsonAsync<TurnstileValidationResponse>(cancellationToken: cancellationToken);
 
-                return validationResponse.Success;
+                return validationResponse?.Success ?? false;
                
             }
             catch (Exception e)

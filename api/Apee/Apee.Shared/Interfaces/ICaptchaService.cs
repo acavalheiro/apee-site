@@ -2,7 +2,7 @@
 
 namespace Apee.Shared.Interfaces;
 
-interface ICaptchaService
+public interface ICaptchaService
 {
     Task<bool> VerifyAsync(CaptchaValidationRequest request, CancellationToken cancellationToken = default);
 }
