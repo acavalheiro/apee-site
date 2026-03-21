@@ -34,17 +34,17 @@
     "home.activities.title": "Atividades para todos os gostos",
     "home.activities.description": "Cada dia \xE9 uma nova aventura na ATL Pragal!",
     "home.activities.btn.all": "Ver todas as atividades \u2192",
-    "home.activities.sport.title": "Desporto & Movimento",
-    "home.activities.sport.desc": "Futebol, jogos tradicionais e atividade f\xEDsica para um desenvolvimento saud\xE1vel.",
-    "home.activities.sport.tag": "Di\xE1rio",
+    "home.activities.sport.title": "Taekwondo",
+    "home.activities.sport.desc": "Aulas de taekwondo para crian\xE7as: disciplina, respeito e autoconfian\xE7a atrav\xE9s de uma arte marcial que desenvolve for\xE7a, equil\xEDbrio e concentra\xE7\xE3o.",
+    "home.activities.sport.tag": "Semanal",
     "home.activities.arts.title": "Artes & Criatividade",
     "home.activities.arts.desc": "Pintura, desenho, colagens e projetos art\xEDsticos que estimulam a imagina\xE7\xE3o.",
     "home.activities.arts.tag": "Semanal",
     "home.activities.study.title": "Apoio ao Estudo",
     "home.activities.study.desc": "Acompanhamento nos trabalhos de casa num ambiente tranquilo e organizado.",
-    "home.activities.study.tag": "Di\xE1rio",
-    "home.activities.music.title": "M\xFAsica & Teatro",
-    "home.activities.music.desc": "Express\xE3o dram\xE1tica e musical para desenvolver criatividade e confian\xE7a.",
+    "home.activities.study.tag": "Semanal",
+    "home.activities.music.title": "Hip-Hop",
+    "home.activities.music.desc": "Aulas de hip-hop para crian\xE7as: movimento, ritmo e express\xE3o art\xEDstica que desenvolvem coordena\xE7\xE3o, confian\xE7a e trabalho em equipa.",
     "home.activities.music.tag": "Semanal",
     // ── Home – CTA ───────────────────────────────────────────────────────────
     "home.cta.title": "A sua fam\xEDlia faz parte da nossa fam\xEDlia \u{1F992}",
@@ -158,7 +158,7 @@
     "footer.description": "Associa\xE7\xE3o de Pais e Encarregados de Educa\xE7\xE3o da EB1/JI n\xBA1 do Pragal. Cuidamos dos tempos livres das crian\xE7as com carinho e dedica\xE7\xE3o.",
     "footer.nav.title": "Navega\xE7\xE3o",
     "footer.contact.title": "Contacto",
-    "footer.hours": "Seg\u2013Sex: 13h\u201319h",
+    "footer.hours": "Seg\u2013Sex: 09h\u201319h",
     "footer.copyright": "\xA9 2026 ATL \u2013 Associa\xE7\xE3o de Pais e Encarregados de Educa\xE7\xE3o da EB1/JI N\xBA1 do Pragal. Todos os direitos reservados."
   };
 
@@ -196,17 +196,17 @@
     "home.activities.title": "Activities for every taste",
     "home.activities.description": "Every day is a new adventure at ATL Pragal!",
     "home.activities.btn.all": "See all activities \u2192",
-    "home.activities.sport.title": "Sports & Movement",
-    "home.activities.sport.desc": "Football, traditional games and physical activity for healthy development.",
-    "home.activities.sport.tag": "Daily",
+    "home.activities.sport.title": "Taekwondo",
+    "home.activities.sport.desc": "Taekwondo classes for kids: discipline, respect and self-confidence through a martial art that builds strength, balance and focus.",
+    "home.activities.sport.tag": "Weekly",
     "home.activities.arts.title": "Arts & Creativity",
     "home.activities.arts.desc": "Painting, drawing, collages and artistic projects that stimulate the imagination.",
     "home.activities.arts.tag": "Weekly",
     "home.activities.study.title": "Study Support",
     "home.activities.study.desc": "Homework support in a calm and organised environment.",
-    "home.activities.study.tag": "Daily",
-    "home.activities.music.title": "Music & Theatre",
-    "home.activities.music.desc": "Dramatic and musical expression to develop creativity and confidence.",
+    "home.activities.study.tag": "Weekly",
+    "home.activities.music.title": "Hip-Hop",
+    "home.activities.music.desc": "Hip-hop classes for kids: movement, rhythm and artistic expression that build coordination, confidence and teamwork.",
     "home.activities.music.tag": "Weekly",
     // Home – CTA
     "home.cta.title": "Your family is part of our family \u{1F992}",
@@ -321,7 +321,7 @@
     "footer.description": "Parents and Guardians Association of EB1/JI n\xBA1 do Pragal. We care for children's free time with warmth and dedication.",
     "footer.nav.title": "Navigation",
     "footer.contact.title": "Contact",
-    "footer.hours": "Mon\u2013Fri: 1 PM\u20137 PM",
+    "footer.hours": "Mon\u2013Fri: 9 AM\u20137 PM",
     "footer.copyright": "\xA9 2025 ATL \u2013 Parents and Guardians Association of EB1/JI n\xBA1 do Pragal. All rights reserved."
   };
 
@@ -406,10 +406,10 @@
   // src/ts/main.ts
   var PAGE_ORDER = {
     home: 0,
-    about: 1,
-    activities: 2,
-    team: 3,
-    contact: 4
+    // about:      1,
+    // activities: 2,
+    // team:       3,
+    contact: 1
   };
   var TURNSTILE_SITE_KEY = "0x4AAAAAAClJQZMxeU_-KHD8";
   var turnstileWidgetId = null;

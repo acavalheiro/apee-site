@@ -4,16 +4,13 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
+      - develop
 
 jobs:
-  build_and_deploy_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+  # ── Shared build ───────────────────────────────────────────────────────────
+  build:
     runs-on: ubuntu-latest
-    name: Build and Deploy Job
+    name: Build
 
     steps:
       - uses: actions/checkout@v3
@@ -21,7 +18,6 @@ jobs:
           submodules: true
           lfs: false
 
-      # ── Build ────────────────────────────────────────────────────────────
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -37,21 +33,41 @@ jobs:
       - name: Bundle with esbuild
         run: npm run build
 
-      # ── Deploy to Azure Storage ──────────────────────────────────────────
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: src/
+          retention-days: 1
+
+  # ── Deploy to Test (develop branch) ───────────────────────────────────────
+  deploy_test:
+    needs: build
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    name: Deploy to Test
+
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: src/
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Upload to Azure Storage (Static Website)
+      - name: Upload to Azure Storage (Test)
         uses: azure/cli@v2
         with:
           azcliversion: latest
           inlineScript: |
-            STORAGE_ACCOUNT="${{ secrets.AZURE_STORAGE_ACCOUNT }}"
+            STORAGE_ACCOUNT="${{ secrets.AZURE_ST_TEST_SITE }}"
             CONTAINER="\$web"
 
-            echo "Uploading to storage account: $STORAGE_ACCOUNT"
+            echo "Uploading to test storage account: $STORAGE_ACCOUNT"
 
             az storage blob upload-batch \
               --account-name "$STORAGE_ACCOUNT" \
@@ -60,7 +76,6 @@ jobs:
               --overwrite true \
               --auth-mode login
 
-            # Fix content types for critical files
             az storage blob update \
               --account-name "$STORAGE_ACCOUNT" \
               --container-name "$CONTAINER" \
@@ -81,7 +96,69 @@ jobs:
               --name "js/main.js" \
               --content-type "application/javascript; charset=utf-8" \
               --auth-mode login
+    
+  # ── Deploy to Production (main branch) ────────────────────────────────────
+  deploy_production:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    name: Deploy to Production
 
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: src/
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Upload to Azure Storage (Production)
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            STORAGE_ACCOUNT="${{ secrets.AZURE_ST_PROD_SITE }}"
+            CONTAINER="\$web"
+
+            echo "Uploading to production storage account: $STORAGE_ACCOUNT"
+
+            az storage blob upload-batch \
+              --account-name "$STORAGE_ACCOUNT" \
+              --source "./src" \
+              --destination "$CONTAINER" \
+              --overwrite true \
+              --auth-mode login
+
+            az storage blob update \
+              --account-name "$STORAGE_ACCOUNT" \
+              --container-name "$CONTAINER" \
+              --name "index.html" \
+              --content-type "text/html; charset=utf-8" \
+              --auth-mode login
+
+            az storage blob update \
+              --account-name "$STORAGE_ACCOUNT" \
+              --container-name "$CONTAINER" \
+              --name "css/styles.css" \
+              --content-type "text/css; charset=utf-8" \
+              --auth-mode login
+
+            az storage blob update \
+              --account-name "$STORAGE_ACCOUNT" \
+              --container-name "$CONTAINER" \
+              --name "js/main.js" \
+              --content-type "application/javascript; charset=utf-8" \
+              --auth-mode login
+              
+  purge_cdn:
+    runs-on: ubuntu-latest
+    name: Purge CDN Cache
+
+    steps:
       - name: Purge Cloudflare Cache
         env:
           CF_ZONE_ID:   ${{ secrets.CLOUDFLARE_ZONE_ID }}
@@ -101,11 +178,3 @@ jobs:
             exit 1
           fi
           echo "Cloudflare cache purged successfully."
-
-  close_pull_request_job:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
-    runs-on: ubuntu-latest
-    name: Close Pull Request Job
-    steps:
-      - name: Comment PR closed
-        run: echo "PR closed — no action needed for static storage hosting."
