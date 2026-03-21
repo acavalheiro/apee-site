@@ -121,7 +121,7 @@ jobs:
         with:
           azcliversion: latest
           inlineScript: |
-            STORAGE_ACCOUNT="${{ secrets.AZURE_STORAGE_ACCOUNT }}"
+            STORAGE_ACCOUNT="${{ secrets.AZURE_ST_PROD_SITE }}"
             CONTAINER="\$web"
 
             echo "Uploading to production storage account: $STORAGE_ACCOUNT"
