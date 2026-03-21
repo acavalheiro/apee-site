@@ -96,7 +96,7 @@ jobs:
               --name "js/main.js" \
               --content-type "application/javascript; charset=utf-8" \
               --auth-mode login
-
+    
   # ── Deploy to Production (main branch) ────────────────────────────────────
   deploy_production:
     needs: build
@@ -153,7 +153,12 @@ jobs:
               --name "js/main.js" \
               --content-type "application/javascript; charset=utf-8" \
               --auth-mode login
+              
+  purge_cdn:
+    runs-on: ubuntu-latest
+    name: Purge CDN Cache
 
+    steps:
       - name: Purge Cloudflare Cache
         env:
           CF_ZONE_ID:   ${{ secrets.CLOUDFLARE_ZONE_ID }}
