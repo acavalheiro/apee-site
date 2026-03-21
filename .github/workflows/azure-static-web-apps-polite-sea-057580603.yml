@@ -155,10 +155,11 @@ jobs:
               --auth-mode login
               
   purge_cdn:
-    needs: 
+    needs:
       - deploy_test
       - deploy_production
-    
+    if: always() && (needs.deploy_test.result == 'success' || needs.deploy_production.result == 'success')
+
     runs-on: ubuntu-latest
     name: Purge CDN Cache
 
