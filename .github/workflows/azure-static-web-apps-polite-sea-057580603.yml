@@ -155,6 +155,10 @@ jobs:
               --auth-mode login
               
   purge_cdn:
+    needs: 
+      - deploy_test
+      - deploy_production
+    
     runs-on: ubuntu-latest
     name: Purge CDN Cache
 
