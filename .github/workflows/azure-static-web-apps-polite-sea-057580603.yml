@@ -4,11 +4,13 @@ on:
   push:
     branches:
       - main
+      - develop
 
 jobs:
-  build_and_deploy_job:
+  # ── Shared build ───────────────────────────────────────────────────────────
+  build:
     runs-on: ubuntu-latest
-    name: Build and Deploy Job
+    name: Build
 
     steps:
       - uses: actions/checkout@v3
@@ -16,7 +18,6 @@ jobs:
           submodules: true
           lfs: false
 
-      # ── Build ────────────────────────────────────────────────────────────
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -32,13 +33,32 @@ jobs:
       - name: Bundle with esbuild
         run: npm run build
 
-      # ── Login ────────────────────────────────────────────────────────────
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: src/
+          retention-days: 1
+
+  # ── Deploy to Test (develop branch) ───────────────────────────────────────
+  deploy_test:
+    needs: build
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    name: Deploy to Test
+
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: src/
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # ── Deploy to Test Site ──────────────────────────────────────────────
       - name: Upload to Azure Storage (Test)
         uses: azure/cli@v2
         with:
@@ -56,7 +76,6 @@ jobs:
               --overwrite true \
               --auth-mode login
 
-            # Fix content types for critical files
             az storage blob update \
               --account-name "$STORAGE_ACCOUNT" \
               --container-name "$CONTAINER" \
@@ -78,7 +97,25 @@ jobs:
               --content-type "application/javascript; charset=utf-8" \
               --auth-mode login
 
-      # ── Deploy to Production ─────────────────────────────────────────────
+  # ── Deploy to Production (main branch) ────────────────────────────────────
+  deploy_production:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    name: Deploy to Production
+
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: src/
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
       - name: Upload to Azure Storage (Production)
         uses: azure/cli@v2
         with:
@@ -96,7 +133,6 @@ jobs:
               --overwrite true \
               --auth-mode login
 
-            # Fix content types for critical files
             az storage blob update \
               --account-name "$STORAGE_ACCOUNT" \
               --container-name "$CONTAINER" \
