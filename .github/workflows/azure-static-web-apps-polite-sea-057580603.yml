@@ -4,14 +4,9 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
 
 jobs:
   build_and_deploy_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
 
@@ -37,13 +32,54 @@ jobs:
       - name: Bundle with esbuild
         run: npm run build
 
-      # ── Deploy to Azure Storage ──────────────────────────────────────────
+      # ── Login ────────────────────────────────────────────────────────────
       - name: Login to Azure
         uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Upload to Azure Storage (Static Website)
+      # ── Deploy to Test Site ──────────────────────────────────────────────
+      - name: Upload to Azure Storage (Test)
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            STORAGE_ACCOUNT="${{ secrets.AZURE_ST_TEST_SITE }}"
+            CONTAINER="\$web"
+
+            echo "Uploading to test storage account: $STORAGE_ACCOUNT"
+
+            az storage blob upload-batch \
+              --account-name "$STORAGE_ACCOUNT" \
+              --source "./src" \
+              --destination "$CONTAINER" \
+              --overwrite true \
+              --auth-mode login
+
+            # Fix content types for critical files
+            az storage blob update \
+              --account-name "$STORAGE_ACCOUNT" \
+              --container-name "$CONTAINER" \
+              --name "index.html" \
+              --content-type "text/html; charset=utf-8" \
+              --auth-mode login
+
+            az storage blob update \
+              --account-name "$STORAGE_ACCOUNT" \
+              --container-name "$CONTAINER" \
+              --name "css/styles.css" \
+              --content-type "text/css; charset=utf-8" \
+              --auth-mode login
+
+            az storage blob update \
+              --account-name "$STORAGE_ACCOUNT" \
+              --container-name "$CONTAINER" \
+              --name "js/main.js" \
+              --content-type "application/javascript; charset=utf-8" \
+              --auth-mode login
+
+      # ── Deploy to Production ─────────────────────────────────────────────
+      - name: Upload to Azure Storage (Production)
         uses: azure/cli@v2
         with:
           azcliversion: latest
@@ -51,7 +87,7 @@ jobs:
             STORAGE_ACCOUNT="${{ secrets.AZURE_STORAGE_ACCOUNT }}"
             CONTAINER="\$web"
 
-            echo "Uploading to storage account: $STORAGE_ACCOUNT"
+            echo "Uploading to production storage account: $STORAGE_ACCOUNT"
 
             az storage blob upload-batch \
               --account-name "$STORAGE_ACCOUNT" \
@@ -101,11 +137,3 @@ jobs:
             exit 1
           fi
           echo "Cloudflare cache purged successfully."
-
-  close_pull_request_job:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
-    runs-on: ubuntu-latest
-    name: Close Pull Request Job
-    steps:
-      - name: Comment PR closed
-        run: echo "PR closed — no action needed for static storage hosting."

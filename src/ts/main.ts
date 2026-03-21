@@ -3,7 +3,8 @@ import { initI18n, t, setLocale, type Locale } from './i18n/i18n';
 
 // ── Types ───────────────────────────────────────────────────────────────────
 
-type PageId = 'home' | 'about' | 'activities' | 'team' | 'contact';
+// type PageId = 'home' | 'about' | 'activities' | 'team' | 'contact';
+type PageId = 'home' | 'contact';
 
 interface ContactFormData {
   firstName:      string;
@@ -44,10 +45,10 @@ declare global {
 
 const PAGE_ORDER: Record<PageId, number> = {
   home:       0,
-  about:      1,
-  activities: 2,
-  team:       3,
-  contact:    4,
+  // about:      1,
+  // activities: 2,
+  // team:       3,
+  contact:    1
 };
 
 const TURNSTILE_SITE_KEY = '0x4AAAAAAClJQZMxeU_-KHD8';

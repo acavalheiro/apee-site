@@ -156,7 +156,7 @@ export const pt = {
     'footer.description': 'Associação de Pais e Encarregados de Educação da EB1/JI nº1 do Pragal. Cuidamos dos tempos livres das crianças com carinho e dedicação.',
     'footer.nav.title': 'Navegação',
     'footer.contact.title': 'Contacto',
-    'footer.hours': 'Seg–Sex: 13h–19h',
+    'footer.hours': 'Seg–Sex: 09h–19h',
     'footer.copyright': '© 2025 ATL – Associação de Pais e Encarregados de Educação da EB1/JI nº1 do Pragal. Todos os direitos reservados.',
 };
 //# sourceMappingURL=pt.js.map

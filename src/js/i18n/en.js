@@ -157,7 +157,7 @@ export const en = {
     'footer.description': "Parents and Guardians Association of EB1/JI nº1 do Pragal. We care for children's free time with warmth and dedication.",
     'footer.nav.title': 'Navigation',
     'footer.contact.title': 'Contact',
-    'footer.hours': 'Mon–Fri: 1 PM–7 PM',
+    'footer.hours': 'Mon–Fri: 9 AM – 7 PM',
     'footer.copyright': '© 2025 ATL – Parents and Guardians Association of EB1/JI nº1 do Pragal. All rights reserved.',
 };
 //# sourceMappingURL=en.js.map
