@@ -108,6 +108,9 @@
     "team.direction.pill": "Lideran\xE7a",
     "team.direction.title": "Dire\xE7\xE3o",
     "team.direction.description": "A equipa que guia a nossa associa\xE7\xE3o com vis\xE3o e compromisso.",
+    "team.direction.president": "Presidente",
+    "team.direction.president.role": "Presidente da Dire\xE7\xE3o",
+    "team.direction.vicepresident": "Vice-Presidente",
     "team.educators.pill": "Educadores",
     "team.educators.title": "A Nossa Equipa Pedag\xF3gica",
     "team.educators.description": "Profissionais qualificados que acompanham as crian\xE7as todos os dias com carinho e compet\xEAncia.",
@@ -270,6 +273,9 @@
     "team.direction.pill": "Leadership",
     "team.direction.title": "Board of Directors",
     "team.direction.description": "The team that guides our association with vision and commitment.",
+    "team.direction.president": "President",
+    "team.direction.president.role": "President of the Board",
+    "team.direction.vicepresident": "Vice-President",
     "team.educators.pill": "Educators",
     "team.educators.title": "Our Teaching Team",
     "team.educators.description": "Qualified professionals who accompany the children every day with warmth and competence.",
@@ -406,10 +412,10 @@
   // src/ts/main.ts
   var PAGE_ORDER = {
     home: 0,
-    // about:      1,
-    // activities: 2,
-    // team:       3,
-    contact: 1
+    about: 1,
+    team: 2,
+    activities: 3,
+    contact: 4
   };
   var TURNSTILE_SITE_KEY = "0x4AAAAAAClJQZMxeU_-KHD8";
   var turnstileWidgetId = null;
