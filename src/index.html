@@ -11,6 +11,7 @@
   <link rel="canonical" href="https://www.apee-pragal.org/" />
   <meta name="geo.region"    content="PT-15" />
   <meta name="geo.placename" content="Almada" />
+  <meta name="geo.position"  content="38.6739;-9.1575" />
 
   <!-- ── Open Graph ── -->
   <meta property="og:title"       content="ATL Pragal – Tempos Livres | EB1/JI nº1 do Pragal" />
@@ -20,9 +21,16 @@
   <meta property="og:type"        content="website" />
   <meta property="og:locale"      content="pt_PT" />
 
+  <!-- ── Twitter Card ── -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="ATL Pragal – Tempos Livres | EB1/JI nº1 do Pragal" />
+  <meta name="twitter:description" content="Atividades desportivas, artísticas e apoio ao estudo para crianças em Almada." />
+  <meta name="twitter:image"       content="https://www.apee-pragal.org/img/logo2.png" />
+
   <!-- ── Fonts ── -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;600;700;800&display=swap" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
   <!-- ── Styles ── -->
@@ -40,20 +48,39 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "ATL – Associação de Pais e Encarregados de Educação da EB1/JI nº1 do Pragal",
+    "@type": ["ChildCare", "LocalBusiness"],
+    "name": "ATL Pragal",
+    "legalName": "ATL – Associação de Pais e Encarregados de Educação da EB1/JI nº1 do Pragal",
     "url": "https://www.apee-pragal.org",
     "logo": "https://www.apee-pragal.org/img/logo2.png",
+    "image": "https://www.apee-pragal.org/img/logo2.png",
+    "description": "Atividades desportivas, artísticas e apoio ao estudo para crianças nos tempos livres em Almada.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Rua Conde D. Henrique",
       "postalCode": "2800-562",
       "addressLocality": "Almada",
+      "addressRegion": "Setúbal",
       "addressCountry": "PT"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 38.6739,
+      "longitude": -9.1575
     },
     "telephone": "+351912865153",
     "email": "geral@apee-pragal.org",
-    "openingHours": "Mo-Fr 09:00-19:00"
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    },
+    "priceRange": "€",
+    "areaServed": {
+      "@type": "City",
+      "name": "Almada"
+    }
   }
   </script>
 
